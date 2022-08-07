@@ -10,23 +10,20 @@ namespace CPAScriptSerializer.Commands {
       public string Format;
       
       /// <summary>
-      /// Implement this method where you parse each parameter and fill each field of your command object
+      /// Fills the fields of this object marked with the "CommandParameter" attribute using the given Parameter array
       /// </summary>
-      /// <param name="parameters">The list of parameters</param>
+      /// <param name="parameters">The parameter array to fill in</param>
       public void Fill(Parameter[] parameters)
       {
          var instanceFields = GetType().GetFields(BindingFlags.Public|BindingFlags.Instance);
 
          foreach (var field in instanceFields) {
-            var fieldSettings = field.GetCustomAttribute<ParameterSettings>();
+            var fieldSettings = field.GetCustomAttribute<CommandParameterAttribute>();
             if (fieldSettings != null) {
 
                if (fieldSettings.Index < parameters.Length) {
 
-                  var paramType = typeof(Parameter);
-
                   // We need to find the implicit operator for the Parameter object
-                  // "op_Implicit", new[] { typeof(string) }, 
                   var converter = typeof(Parameter).GetMethods().FirstOrDefault(m => m.Name == "op_Implicit" && m.ReturnParameter?.ParameterType == field.FieldType);
 
                   if (converter != null) {

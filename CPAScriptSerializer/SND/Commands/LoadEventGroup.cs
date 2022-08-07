@@ -11,10 +11,10 @@ namespace CPAScriptSerializer.SND.Commands {
     */
    public class LoadEventGroup : Command
    {
-      [ParameterSettings(0)]
+      [CommandParameter(0)]
       public string GroupName;
 
-      [ParameterSettings(1)]
+      [CommandParameter(1)]
       public int GroupId;
    }
 }

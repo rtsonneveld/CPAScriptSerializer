@@ -7,7 +7,7 @@ namespace CPAScriptSerializer.SND.Commands {
 
    public class LoadBank : Command
    {
-      [ParameterSettings(0)]
+      [CommandParameter(0)]
       public int BankIndex;
    }
 }

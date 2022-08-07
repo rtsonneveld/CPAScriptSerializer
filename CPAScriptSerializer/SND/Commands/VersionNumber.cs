@@ -6,7 +6,7 @@ using CPAScriptSerializer.Commands;
 namespace CPAScriptSerializer.SND.Commands {
    public class VersionNumber : Command
    {
-      [ParameterSettings(0)]
+      [CommandParameter(0)]
       public int Version;
    }
 }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace CPAScriptSerializer.Commands {
-   public class ParameterSettings : Attribute
+   public class CommandParameterAttribute : Attribute
    {
       public int Index { get; set; }
 
-      public ParameterSettings(int index)
+      public CommandParameterAttribute(int index)
       {
          Index = index;
       }
