@@ -7,11 +7,7 @@ namespace CPAScriptSerializer.SND.Commands {
 
    public class LoadEvent : Command
    {
+      [ParameterSettings(0)]
       public string EventName;
-
-      public override void Fill(Parameter[] parameters)
-      {
-         EventName = parameters[0];
-      }
    }
 }

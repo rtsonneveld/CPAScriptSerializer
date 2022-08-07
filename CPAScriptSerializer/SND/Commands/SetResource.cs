@@ -7,15 +7,13 @@ namespace CPAScriptSerializer.SND.Commands {
 
    public class SetResource : Command
    {
+      [ParameterSettings(0)]
       public string ResourceName;
-      public ulong BankId;
-      public ulong Pos;
 
-      public override void Fill(Parameter[] parameters)
-      {
-         ResourceName = parameters[0];
-         BankId = parameters[1];
-         Pos = parameters[2];
-      }
+      [ParameterSettings(1)]
+      public ulong BankId;
+
+      [ParameterSettings(2)]
+      public ulong Pos;
    }
 }

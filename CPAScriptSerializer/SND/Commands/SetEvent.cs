@@ -7,15 +7,13 @@ namespace CPAScriptSerializer.SND.Commands {
 
    public class SetEvent : Command
    {
+      [ParameterSettings(0)]
       public string EventName;
-      public ulong BankId;
-      public ulong Pos;
 
-      public override void Fill(Parameter[] parameters)
-      {
-         EventName = parameters[0];
-         BankId = parameters[1];
-         Pos = parameters[2];
-      }
+      [ParameterSettings(1)]
+      public ulong BankId;
+
+      [ParameterSettings(2)]
+      public ulong Pos;
    }
 }

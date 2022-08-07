@@ -7,11 +7,7 @@ namespace CPAScriptSerializer.SND.Commands {
 
    public class LoadResource : Command
    {
+      [ParameterSettings(0)]
       public string ResourcePath;
-
-      public override void Fill(Parameter[] parameters)
-      {
-         ResourcePath = parameters[0];
-      }
    }
 }

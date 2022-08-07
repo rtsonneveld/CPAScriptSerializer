@@ -6,12 +6,7 @@ using CPAScriptSerializer.Commands;
 namespace CPAScriptSerializer.SND.Commands {
    public class SetNextFreeGroupId : Command
    {
-
+      [ParameterSettings(0)]
       public int NextFreeGroupId;
-
-      public override void Fill(Parameter[] parameters)
-      {
-         NextFreeGroupId = parameters[0];
-      }
    }
 }
