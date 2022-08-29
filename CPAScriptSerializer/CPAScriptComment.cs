@@ -9,14 +9,16 @@ namespace CPAScriptSerializer {
 	public class CPAScriptComment : CPAScriptItem
 	{
 		public string Comment;
-		public void Read(string line)
+
+      public void Read(CPAScript script, StreamReader reader, string lastLine)
 		{
-			Comment = line;
+         Comment = lastLine;
 		}
 
-		public override void Write(StreamWriter writer)
+      public void Write(ref int indent, StreamWriter writer)
 		{
-			writer.Write(Comment);
+         // Ignore indent
+			writer.WriteLine(Comment);
 		}
 	}
 }

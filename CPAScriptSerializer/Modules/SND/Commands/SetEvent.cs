@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using CPAScriptSerializer.Commands;
+﻿using CPAScriptSerializer.Commands;
 
-namespace CPAScriptSerializer.SND.Commands {
+namespace CPAScriptSerializer.Modules.SND.Commands {
 
    public class SetEvent : Command
    {

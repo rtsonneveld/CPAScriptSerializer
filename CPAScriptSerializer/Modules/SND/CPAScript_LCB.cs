@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CPAScriptSerializer.SND {
+namespace CPAScriptSerializer.Modules.SND {
 	public class CPAScript_LCB : CPAScript{
 		public override Dictionary<string, Type> SectionTypes { get; } = new()
 		{

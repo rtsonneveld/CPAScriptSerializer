@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using CPAScriptSerializer.Commands;
-using CPAScriptSerializer.SND.Commands;
+using CPAScriptSerializer.Modules.SND.Commands;
 
-namespace CPAScriptSerializer.IPT.Sections {
+namespace CPAScriptSerializer.Modules.IPT.Sections {
 	public class InputAction : CPAScriptSection {
 
 		public InputAction(string sectionId) : base(sectionId) { }
@@ -14,10 +12,6 @@ namespace CPAScriptSerializer.IPT.Sections {
          {nameof(SetDefaultLanguage), typeof(SetDefaultLanguage)},
       };
 
-
-		public override void WriteContent(StreamWriter writer)
-		{
-			throw new NotImplementedException();
-		}
-	}
+      public override Type CommandTypeFallback => null;
+   }
 }

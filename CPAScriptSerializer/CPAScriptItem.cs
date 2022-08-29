@@ -6,8 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CPAScriptSerializer {
-	public abstract class CPAScriptItem
+	public interface CPAScriptItem
 	{
-		public abstract void Write(StreamWriter writer);
+		public void Read(CPAScript script, StreamReader reader, string lastLine);
+		public void Write(ref int indent, StreamWriter writer);
 	}
 }

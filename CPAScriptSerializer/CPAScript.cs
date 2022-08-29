@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using CPAScriptSerializer.Commands;
 
 namespace CPAScriptSerializer {
 	/*
@@ -65,6 +67,7 @@ namespace CPAScriptSerializer {
       public const char MarkParamSeparator = ',';
       public const char MarkFormatBegin = '[';
       public const char MarkFormatEnd = ']';
+      public const char IndentCharacter = '\t';
 
 		public List<CPAScriptItem> Items;
 
@@ -100,8 +103,10 @@ namespace CPAScriptSerializer {
 		{
 			using StreamWriter writer = new StreamWriter(s);
 
+         int indent = 0;
+
 			foreach (var item in Items) {
-				item.Write(writer);
+				item.Write(ref indent, writer);
 			}
 
 			writer.Flush();
@@ -113,51 +118,45 @@ namespace CPAScriptSerializer {
 			if (string.IsNullOrWhiteSpace(line)) {
 				return;
 			}
+
+         CPAScriptItem item = null;
+
 			switch (line[0]) {
 				case MarkSectionBegin:
 
-					// A section has a type and an ID, e.g. {InputAction:ReinitTheMap
-					int sectionIdChar = line.IndexOf(MarkSectionId);
+					CPAScriptSection.Parse(line, out string sectionType, out string sectionId);
+               item = GenerateSection(sectionType, sectionId);
 
-					string sectionType = (sectionIdChar > 0) ? line[1 .. sectionIdChar] : line[1..];
-					string sectionId = (sectionIdChar > 0) ? line[(sectionIdChar+1) ..] : string.Empty;
-
-					// Read all the lines for this section in advance
-					List<string> sectionLines = new List<string>();
-
-               string sectionLine = reader.ReadLine();
-
-               while (sectionLine != null && sectionLine[0] != MarkSectionEnd) {
-                  sectionLines.Add(sectionLine);
-
-                  sectionLine = reader.ReadLine();
-					}
-
-					var section = GenerateSection(sectionType, sectionId);
-					if (section == null) {
+					if (item == null) {
 						throw new ArgumentException($"Unknown section type {sectionType}");
 					}
-					section.Parse(sectionLines.ToArray());
 
-					Items.Add(section);
-
-					break;
+               break;
 
 				case MarkDirective:
-					var directive = new CPAScriptDirective();
-					directive.Read(line);
-					Items.Add(directive);
+					item = new CPAScriptDirective();
 
 					break;
 				case MarkComment:
 
-					var comment = new CPAScriptComment();
-					comment.Read(line);
-					Items.Add(comment);
+					item = new CPAScriptComment();
 
 					break;
 				default: break;
 			}
-		}
-	}
+
+         if (item != null) {
+
+            item.Read(this, reader, line);
+            Items.Add(item);
+         } else {
+				Debug.WriteLine($"Warning: unable to parse line: {line}");
+         }
+      }
+
+      public static string Indent(int indent)
+      {
+         return new string(IndentCharacter, indent);
+      }
+   }
 }

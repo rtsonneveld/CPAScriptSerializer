@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using CPAScriptSerializer.Commands;
-using CPAScriptSerializer.SND.Commands;
+using CPAScriptSerializer.Modules.SND.Commands;
 
-namespace CPAScriptSerializer.SND.Sections {
+namespace CPAScriptSerializer.Modules.SND.Sections {
 
    public class SndEventIdList : CPAScriptSection {
       public SndEventIdList(string sectionId) : base(sectionId)
@@ -16,9 +14,6 @@ namespace CPAScriptSerializer.SND.Sections {
          {nameof(SetEvent), typeof(SetEvent)},
       };
 
-      public override void WriteContent(StreamWriter writer)
-      {
-         throw new System.NotImplementedException();
-      }
+      public override Type CommandTypeFallback => null;
    }
 }

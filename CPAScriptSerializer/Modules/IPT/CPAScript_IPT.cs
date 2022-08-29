@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CPAScriptSerializer.IPT.Sections;
+using CPAScriptSerializer.Modules.IPT.Sections;
 
-namespace CPAScriptSerializer.IPT {
+namespace CPAScriptSerializer.Modules.IPT {
 
 	public class CPAScript_IPT : CPAScript
 	{
