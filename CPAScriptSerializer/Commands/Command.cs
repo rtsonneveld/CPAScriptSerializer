@@ -4,8 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace CPAScriptSerializer.Commands {
-
+namespace CPAScriptSerializer.Commands
+{
    public abstract class Command : CPAScriptItem
    {
       // The name of the command, which is usually the same as the type
@@ -41,7 +41,8 @@ namespace CPAScriptSerializer.Commands {
          parameters = Array.Empty<Parameter>();
 
          if (paramBegin > 0 && paramEnd > paramBegin + 1) {
-            parameters = Array.ConvertAll(line[(paramBegin + 1)..(paramEnd)].Split(CPAScript.MarkParamSeparator), item => (Parameter)item);
+            parameters = Array.ConvertAll(line[(paramBegin + 1)..(paramEnd)].Split(CPAScript.MarkParamSeparator),
+               item => (Parameter)item);
          }
 
          // Parse format
@@ -66,16 +67,15 @@ namespace CPAScriptSerializer.Commands {
       /// <param name="parameters">The parameter array to fill in</param>
       private void Fill(Parameter[] parameters)
       {
-         var instanceFields = GetType().GetFields(BindingFlags.Public|BindingFlags.Instance);
+         var instanceFields = GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
 
          foreach (var field in instanceFields) {
             var fieldSettings = field.GetCustomAttribute<CommandParameterAttribute>();
             if (fieldSettings != null) {
-
                if (fieldSettings.Index < parameters.Length) {
-
                   // We need to find the implicit operator for the Parameter object
-                  var converter = typeof(Parameter).GetMethods().FirstOrDefault(m => m.Name == "op_Implicit" && m.ReturnParameter?.ParameterType == field.FieldType);
+                  var converter = typeof(Parameter).GetMethods().FirstOrDefault(m =>
+                     m.Name == "op_Implicit" && m.ReturnParameter?.ParameterType == field.FieldType);
 
                   if (converter != null) {
                      field.SetValue(this, converter.Invoke(null, new object[] { parameters[fieldSettings.Index] }));
@@ -101,7 +101,6 @@ namespace CPAScriptSerializer.Commands {
          foreach (var field in instanceFields) {
             var fieldSettings = field.GetCustomAttribute<CommandParameterAttribute>();
             if (fieldSettings != null) {
-
                parameterList.Add(field.GetValue(this)?.ToString() ?? string.Empty);
             }
          }
@@ -111,7 +110,9 @@ namespace CPAScriptSerializer.Commands {
          // LoadEventGroup(EXPLOS,27)
          // SetNextFreeGroupId[%lu](101)
 
-         string format = string.IsNullOrWhiteSpace(Format) ? string.Empty : CPAScript.MarkFormatBegin + Format + CPAScript.MarkFormatEnd;
+         string format = string.IsNullOrWhiteSpace(Format)
+            ? string.Empty
+            : CPAScript.MarkFormatBegin + Format + CPAScript.MarkFormatEnd;
          string parameters = string.Join(CPAScript.MarkParamSeparator, parameterList);
 
          writer.WriteLine($"{CPAScript.Indent(indent)}" +

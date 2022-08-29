@@ -6,15 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 using CPAScriptSerializer.Commands;
 
-namespace CPAScriptSerializer {
-	public abstract class CPAScriptSection : CPAScriptItem
-	{
-		public readonly string SectionId;
+namespace CPAScriptSerializer
+{
+   public abstract class CPAScriptSection : CPAScriptItem
+   {
+      public readonly string SectionId;
 
       /// <summary>
       /// Dictionary values must be a Type that inherits CPAScriptCommand
       /// </summary>
-		public abstract Dictionary<string, Type> CommandTypes { get; }
+      public abstract Dictionary<string, Type> CommandTypes { get; }
+
       /// <summary>
       /// In case the command type can't be found, it's possible to provide a default fallback
       /// </summary>
@@ -22,9 +24,9 @@ namespace CPAScriptSerializer {
 
       public List<CPAScriptItem> Items;
 
-		public CPAScriptSection(string sectionId)
-		{
-			SectionId = sectionId;
+      public CPAScriptSection(string sectionId)
+      {
+         SectionId = sectionId;
          Items = new List<CPAScriptItem>();
       }
 
@@ -59,12 +61,11 @@ namespace CPAScriptSerializer {
          throw new Exception($"No constructor found for command {commandType}");
       }
 
-		public void Read(CPAScript script, StreamReader reader, string lastLine)
+      public void Read(CPAScript script, StreamReader reader, string lastLine)
       {
          var line = reader.ReadLine();
 
          while (line != null && line.Trim()[0] != CPAScript.MarkSectionEnd) {
-
             line = line.Trim();
 
             if (line.StartsWith(CPAScript.MarkSectionBegin)) {
@@ -75,9 +76,7 @@ namespace CPAScriptSerializer {
                section.Read(script, reader, line);
 
                Items.Add(section);
-
             } else {
-               
                Command.Parse(line, out string commandName, out _, out _);
                var command = GenerateCommand(commandName);
                command.Read(script, reader, line);
@@ -103,9 +102,9 @@ namespace CPAScriptSerializer {
       }
 
       public void Write(ref int indent, StreamWriter writer)
-		{
+      {
          writer.WriteLine($"{CPAScript.Indent(indent)}{CPAScript.MarkSectionBegin}{GetType().Name}:{SectionId}");
-			//WriteContent(writer);
+         //WriteContent(writer);
 
          indent++;
 
@@ -115,7 +114,7 @@ namespace CPAScriptSerializer {
 
          indent--;
 
-			writer.WriteLine(CPAScript.MarkSectionEnd);
-		}
+         writer.WriteLine(CPAScript.MarkSectionEnd);
+      }
    }
 }

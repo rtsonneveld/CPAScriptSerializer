@@ -1,9 +1,9 @@
 ﻿using CPAScriptSerializer.Commands;
 
-namespace CPAScriptSerializer.Modules.SND.Commands {
+namespace CPAScriptSerializer.Modules.SND.Commands
+{
    public class VersionNumber : Command
    {
-      [CommandParameter(0)]
-      public int Version;
+      [CommandParameter(0)] public int Version;
    }
 }

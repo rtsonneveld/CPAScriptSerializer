@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CPAScriptSerializer.Commands {
-   public class Parameter {
-      
+namespace CPAScriptSerializer.Commands
+{
+   public class Parameter
+   {
       public string Value;
 
       public Parameter(string value)

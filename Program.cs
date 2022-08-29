@@ -3,7 +3,8 @@ using System.Diagnostics;
 using System.IO;
 using CPAScriptSerializer.Modules.AI;
 
-namespace CPAScriptSerializer {
+namespace CPAScriptSerializer
+{
    class Program
    {
       private const string TestFilesDir = @"..\..\..\TestFiles\";

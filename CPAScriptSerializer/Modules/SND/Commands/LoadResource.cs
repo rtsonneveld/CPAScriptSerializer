@@ -1,10 +1,9 @@
 ﻿using CPAScriptSerializer.Commands;
 
-namespace CPAScriptSerializer.Modules.SND.Commands {
-
+namespace CPAScriptSerializer.Modules.SND.Commands
+{
    public class LoadResource : Command
    {
-      [CommandParameter(0)]
-      public string ResourcePath;
+      [CommandParameter(0)] public string ResourcePath;
    }
 }

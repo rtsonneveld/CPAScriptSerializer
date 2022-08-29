@@ -1,10 +1,9 @@
 ﻿using CPAScriptSerializer.Commands;
 
-namespace CPAScriptSerializer.Modules.SND.Commands {
-
+namespace CPAScriptSerializer.Modules.SND.Commands
+{
    public class LoadBank : Command
    {
-      [CommandParameter(0)]
-      public int BankIndex;
+      [CommandParameter(0)] public int BankIndex;
    }
 }

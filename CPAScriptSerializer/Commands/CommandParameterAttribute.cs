@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CPAScriptSerializer.Commands {
+namespace CPAScriptSerializer.Commands
+{
    public class CommandParameterAttribute : Attribute
    {
       public int Index { get; set; }

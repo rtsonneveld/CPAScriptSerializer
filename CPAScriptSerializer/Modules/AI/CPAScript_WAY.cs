@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CPAScriptSerializer.Modules.AI {
-   
+namespace CPAScriptSerializer.Modules.AI
+{
    // The .wp extension is also used for some reason
    public class CPAScript_WAY : CPAScript
    {
