@@ -51,7 +51,7 @@ namespace CPAScriptSerializer
          if (constructor != null) {
             var cmd = Activator.CreateInstance(typeToGenerate) as Command;
             if (cmd == null) {
-               throw new Exception($"Failed to generate command {commandType}");
+               throw new Exception($"Failed to generate command {commandType} - check if the class extends Command");
             }
 
             cmd.Name = commandType;
@@ -61,31 +61,58 @@ namespace CPAScriptSerializer
          throw new Exception($"No constructor found for command {commandType}");
       }
 
-      public void Read(CPAScript script, StreamReader reader, string lastLine)
+      public void Read(CPAScript script, CPAScriptSection section, StreamReader reader, string lastLine)
       {
          var line = reader.ReadLine();
 
-         while (line != null && line.Trim()[0] != CPAScript.MarkSectionEnd) {
-            line = line.Trim();
+         while (line != null && (string.IsNullOrWhiteSpace(line) || line.Trim()[0] != CPAScript.MarkSectionEnd)) {
 
-            if (line.StartsWith(CPAScript.MarkSectionBegin)) {
-               // Subsection
+            if (!string.IsNullOrWhiteSpace(line)) {
 
-               CPAScriptSection.Parse(line, out string sectionType, out string sectionId);
-               var section = script.GenerateSection(sectionType, sectionId);
-               section.Read(script, reader, line);
+               line = line.Trim();
 
-               Items.Add(section);
-            } else {
-               Command.Parse(line, out string commandName, out _, out _);
-               var command = GenerateCommand(commandName);
-               command.Read(script, reader, line);
-
-               Items.Add(command);
+               var item = ParseLine(script, section, reader, line);
+               Items.Add(item);
             }
 
             line = reader.ReadLine();
          }
+      }
+      
+      // Parses a single line in a section
+      public CPAScriptItem ParseLine(CPAScript script, CPAScriptSection section, StreamReader reader, string line)
+      {
+         // Make sure the line is trimmed
+         line = line.Trim();
+
+         CPAScriptItem item = null;
+
+         // Ignore comments
+         if (line.StartsWith(CPAScript.MarkComment)) {
+            var comment = new CPAScriptComment();
+            comment.Read(script, section, reader, line);
+            item = comment;
+         } else if (line.StartsWith(CPAScript.MarkSectionBegin)) {
+            // Subsection
+
+            CPAScriptSection.Parse(line, out string sectionType, out string sectionId);
+            var newSection = script.GenerateSection(sectionType, sectionId);
+            newSection.Read(script, this, reader, line);
+
+            item = newSection;
+         } else {
+            Command.Parse(line, out string commandName, out _, out _);
+            var command = GenerateCommand(commandName);
+
+            command.Read(script, this, reader, line);
+            item = command;
+         }
+
+         if (item == null) {
+            throw new Exception($"Could not parse line {line}");
+         }
+
+         return item;
       }
 
       private static List<string> ReadLines(StreamReader reader)
@@ -114,7 +141,7 @@ namespace CPAScriptSerializer
 
          indent--;
 
-         writer.WriteLine(CPAScript.MarkSectionEnd);
+         writer.WriteLine(CPAScript.Indent(indent)+CPAScript.MarkSectionEnd);
       }
    }
 }

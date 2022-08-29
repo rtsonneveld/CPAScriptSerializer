@@ -9,6 +9,10 @@ namespace CPAScriptSerializer.Modules.IPT
       public override Dictionary<string, Type> SectionTypes { get; } = new()
       {
          { nameof(InputAction), typeof(InputAction) },
+         { nameof(Sequence), typeof(Sequence) },
+         { nameof(ActivateDevices), typeof(ActivateDevices) },
+         { nameof(KeyDefine), typeof(KeyDefine) },
+         { nameof(IptLink), typeof(IptLink) },
       };
    }
 }

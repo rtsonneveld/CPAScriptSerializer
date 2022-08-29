@@ -146,7 +146,7 @@ namespace CPAScriptSerializer
          }
 
          if (item != null) {
-            item.Read(this, reader, line);
+            item.Read(this, null, reader, line);
             Items.Add(item);
          } else {
             Debug.WriteLine($"Warning: unable to parse line: {line}");

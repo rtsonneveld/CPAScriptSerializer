@@ -11,7 +11,7 @@ namespace CPAScriptSerializer
    {
       public string Comment;
 
-      public void Read(CPAScript script, StreamReader reader, string lastLine)
+      public void Read(CPAScript script, CPAScriptSection section, StreamReader reader, string lastLine)
       {
          Comment = lastLine;
       }

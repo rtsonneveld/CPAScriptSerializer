@@ -53,7 +53,7 @@ namespace CPAScriptSerializer.Commands
          }
       }
 
-      public void Read(CPAScript script, StreamReader reader, string line)
+      public virtual void Read(CPAScript script, CPAScriptSection section, StreamReader reader, string line)
       {
          Command.Parse(line, out _, out var format, out var parameters);
 
@@ -92,7 +92,7 @@ namespace CPAScriptSerializer.Commands
       /// </summary>
       /// <param name="indent"></param>
       /// <param name="writer">The stream writer</param>
-      public void Write(ref int indent, StreamWriter writer)
+      public virtual void Write(ref int indent, StreamWriter writer)
       {
          List<string> parameterList = new List<string>();
 
@@ -101,7 +101,10 @@ namespace CPAScriptSerializer.Commands
          foreach (var field in instanceFields) {
             var fieldSettings = field.GetCustomAttribute<CommandParameterAttribute>();
             if (fieldSettings != null) {
-               parameterList.Add(field.GetValue(this)?.ToString() ?? string.Empty);
+               var value = field.GetValue(this);
+               if (value != null) {
+                  parameterList.Add(value.ToString());
+               }
             }
          }
 

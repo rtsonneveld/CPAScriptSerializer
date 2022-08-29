@@ -11,7 +11,7 @@ namespace CPAScriptSerializer
    {
       public string Directive;
 
-      public void Read(CPAScript script, StreamReader reader, string lastLine)
+      public void Read(CPAScript script, CPAScriptSection section, StreamReader reader, string lastLine)
       {
          Directive = lastLine;
       }
