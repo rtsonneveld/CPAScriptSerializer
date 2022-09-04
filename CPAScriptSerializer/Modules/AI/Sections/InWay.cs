@@ -11,6 +11,6 @@ namespace CPAScriptSerializer.Modules.AI.Sections
       }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>() { };
-      public override Type CommandTypeFallback => null;
+      public override Type CommandTypeFallback(string name) => null;
    }
 }

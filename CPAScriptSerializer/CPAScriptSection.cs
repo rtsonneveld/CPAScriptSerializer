@@ -10,7 +10,12 @@ namespace CPAScriptSerializer
 {
    public abstract class CPAScriptSection : CPAScriptItem
    {
-      public readonly string SectionId;
+      public string SectionId;
+
+      /// <summary>
+      /// Override this to change how this section is exported, by default this returns SectionId
+      /// </summary>
+      public virtual string SectionExportName => SectionId;
 
       /// <summary>
       /// Dictionary values must be a Type that inherits CPAScriptCommand
@@ -20,7 +25,7 @@ namespace CPAScriptSerializer
       /// <summary>
       /// In case the command type can't be found, it's possible to provide a default fallback
       /// </summary>
-      public abstract Type CommandTypeFallback { get; }
+      public abstract Type CommandTypeFallback(string name);
 
       public List<CPAScriptItem> Items;
 
@@ -41,7 +46,7 @@ namespace CPAScriptSerializer
 
       public Command GenerateCommand(string commandType)
       {
-         Type typeToGenerate = CommandTypes.ContainsKey(commandType) ? CommandTypes[commandType] : CommandTypeFallback;
+         Type typeToGenerate = CommandTypes.ContainsKey(commandType) ? CommandTypes[commandType] : CommandTypeFallback(commandType);
 
          if (typeToGenerate == null) {
             throw new ArgumentException($"Unknown command type {commandType} and no fallback provided");
@@ -130,7 +135,7 @@ namespace CPAScriptSerializer
 
       public void Write(ref int indent, StreamWriter writer)
       {
-         writer.WriteLine($"{CPAScript.Indent(indent)}{CPAScript.MarkSectionBegin}{GetType().Name}:{SectionId}");
+         writer.WriteLine($"{CPAScript.Indent(indent)}{CPAScript.MarkSectionBegin}{GetType().Name}:{SectionExportName}");
          //WriteContent(writer);
 
          indent++;

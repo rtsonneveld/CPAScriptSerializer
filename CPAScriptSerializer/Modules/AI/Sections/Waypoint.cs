@@ -17,6 +17,6 @@ namespace CPAScriptSerializer.Modules.AI.Sections
          { nameof(Radius), typeof(Radius) },
       };
 
-      public override Type CommandTypeFallback => null;
+      public override Type CommandTypeFallback(string name) => null;
    }
 }

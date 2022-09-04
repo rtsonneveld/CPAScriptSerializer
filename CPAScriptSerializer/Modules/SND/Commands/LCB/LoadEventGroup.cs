@@ -1,6 +1,6 @@
 ﻿using CPAScriptSerializer.Commands;
 
-namespace CPAScriptSerializer.Modules.SND.Commands
+namespace CPAScriptSerializer.Modules.SND.Commands.LCB
 {
    /*
     * Script Callback for SndEventGroupList section

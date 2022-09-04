@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using CPAScriptSerializer.Modules.SND.Commands;
+using CPAScriptSerializer.Modules.SND.Commands.LCB;
 
-namespace CPAScriptSerializer.Modules.SND.Sections
+namespace CPAScriptSerializer.Modules.SND.Sections.LCB
 {
    public class LcbHeader : CPAScriptSection
    {
@@ -17,6 +18,6 @@ namespace CPAScriptSerializer.Modules.SND.Sections
          { nameof(SetNextFreeGroupId), typeof(SetNextFreeGroupId) },
       };
 
-      public override Type CommandTypeFallback => null;
+      public override Type CommandTypeFallback(string name) => null;
    }
 }

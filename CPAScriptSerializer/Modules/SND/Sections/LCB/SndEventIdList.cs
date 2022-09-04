@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using CPAScriptSerializer.Modules.SND.Commands;
+using CPAScriptSerializer.Modules.SND.Commands.LCB;
 
-namespace CPAScriptSerializer.Modules.SND.Sections
+namespace CPAScriptSerializer.Modules.SND.Sections.LCB
 {
    public class SndEventIdList : CPAScriptSection
    {
@@ -15,6 +16,6 @@ namespace CPAScriptSerializer.Modules.SND.Sections
          { nameof(SetEvent), typeof(SetEvent) },
       };
 
-      public override Type CommandTypeFallback => null;
+      public override Type CommandTypeFallback(string name) => null;
    }
 }

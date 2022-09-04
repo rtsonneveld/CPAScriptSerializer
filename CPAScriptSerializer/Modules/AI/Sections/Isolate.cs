@@ -14,6 +14,6 @@ namespace CPAScriptSerializer.Modules.AI.Sections
          { nameof(Waypoint), typeof(Waypoint) },
       };
 
-      public override Type CommandTypeFallback => null;
+      public override Type CommandTypeFallback(string name) => null;
    }
 }

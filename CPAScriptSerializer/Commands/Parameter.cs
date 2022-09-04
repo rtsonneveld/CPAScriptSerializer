@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using CPAScriptSerializer.Modules.IPT;
 using CPAScriptSerializer.Modules.IPT.Enums;
+using CPAScriptSerializer.Modules.SND.Enums;
 
 namespace CPAScriptSerializer.Commands
 {
@@ -18,6 +19,8 @@ namespace CPAScriptSerializer.Commands
       public static implicit operator Parameter(string s) => new(s);
 
       public static implicit operator string(Parameter p) => p.Value;
+
+      public static implicit operator bool(Parameter p) => bool.Parse(p.Value);
 
       public static implicit operator byte(Parameter p) => byte.Parse(p.Value);
       public static implicit operator sbyte(Parameter p) => sbyte.Parse(p.Value);
@@ -35,6 +38,9 @@ namespace CPAScriptSerializer.Commands
       public static implicit operator double(Parameter p) => double.Parse(p.Value);
 
       // Nullables (optional parameters):
+
+      public static implicit operator bool?(Parameter p) => string.IsNullOrWhiteSpace(p.Value) ? null : bool.Parse(p.Value);
+
       public static implicit operator byte?(Parameter p) => string.IsNullOrWhiteSpace(p.Value) ? null : byte.Parse(p.Value);
       public static implicit operator sbyte?(Parameter p) => string.IsNullOrWhiteSpace(p.Value) ? null : sbyte.Parse(p.Value);
 
@@ -50,9 +56,20 @@ namespace CPAScriptSerializer.Commands
       public static implicit operator float?(Parameter p) => string.IsNullOrWhiteSpace(p.Value) ? null : float.Parse(p.Value);
       public static implicit operator double?(Parameter p) => string.IsNullOrWhiteSpace(p.Value) ? null : double.Parse(p.Value);
 
-      // Enums:
+      #region Enums
+
+      #region IPT
       public static implicit operator EnumJoyPadAxe(Parameter p) => Enum.Parse<EnumJoyPadAxe>(p.Value);
       public static implicit operator EnumJoyPadButton(Parameter p) => Enum.Parse<EnumJoyPadButton>(p.Value);
       public static implicit operator EnumRefType(Parameter p) => Enum.Parse<EnumRefType>(p.Value);
+      #endregion
+
+      #region SND
+      public static implicit operator EnumStorageType(Parameter p) => Enum.Parse<EnumStorageType>(p.Value);
+      public static implicit operator EnumResourceType(Parameter p) => Enum.Parse<EnumResourceType>(p.Value);
+      public static implicit operator EnumZipFormat(Parameter p) => Enum.Parse<EnumZipFormat>(p.Value);
+      #endregion
+
+      #endregion
    }
 }

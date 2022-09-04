@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using CPAScriptSerializer.Modules.SND.Commands;
+using CPAScriptSerializer.Modules.SND.Commands.CSB;
+
+namespace CPAScriptSerializer.Modules.SND.Sections.CSB
+{
+   public class SndEventE : CPAScriptSection
+   {
+      public SndEventE(string sectionId) : base(sectionId)
+      {
+      }
+
+      public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
+      {
+         { nameof(SetName), typeof(SetName) },
+         { nameof(SetComment), typeof(SetComment) },
+         { nameof(SetParam1), typeof(SetParam1) },
+         { nameof(SetParam2), typeof(SetParam2) },
+         { nameof(SetParam3), typeof(SetParam3) },
+         { nameof(SetParam4), typeof(SetParam4) },
+      };
+
+      public override Type CommandTypeFallback(string name) => null;
+   }
+}

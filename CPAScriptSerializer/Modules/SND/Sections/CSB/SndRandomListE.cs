@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using CPAScriptSerializer.Modules.IPT.Commands;
 
-namespace CPAScriptSerializer.Modules.IPT.Sections {
-   public class IptLink : CPAScriptSection {
-      public IptLink(string sectionId) : base(sectionId) { }
+namespace CPAScriptSerializer.Modules.SND.Sections.CSB {
+   public class SndRandomListE : CPAScriptSection {
+      public SndRandomListE(string sectionId) : base(sectionId)
+      {
+      }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {
-         { nameof(AddRef), typeof(AddRef) },
+         { nameof(SndRandomElementE), typeof(SndRandomElementE) },
       };
 
       public override Type CommandTypeFallback(string name) => null;

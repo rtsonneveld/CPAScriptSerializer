@@ -103,7 +103,14 @@ namespace CPAScriptSerializer.Commands
             if (fieldSettings != null) {
                var value = field.GetValue(this);
                if (value != null) {
-                  parameterList.Add(value.ToString());
+
+                  string valueString = value.ToString();
+
+                  if (valueString != null && value is bool) {
+                     valueString = valueString.ToUpper();
+                  }
+
+                  parameterList.Add(valueString);
                }
             }
          }

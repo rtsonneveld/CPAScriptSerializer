@@ -50,6 +50,6 @@ namespace CPAScriptSerializer.Modules.IPT.Sections
 
       };
 
-      public override Type CommandTypeFallback => null;
+      public override Type CommandTypeFallback(string name) => null;
    }
 }

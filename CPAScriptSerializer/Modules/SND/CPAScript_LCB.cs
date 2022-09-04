@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CPAScriptSerializer.Modules.SND.Sections.LCB;
 
 namespace CPAScriptSerializer.Modules.SND
 {
@@ -7,12 +8,12 @@ namespace CPAScriptSerializer.Modules.SND
    {
       public override Dictionary<string, Type> SectionTypes { get; } = new()
       {
-         { nameof(Sections.LcbHeader), typeof(Sections.LcbHeader) },
-         { nameof(Sections.SndEventGroupList), typeof(Sections.SndEventGroupList) },
-         { nameof(Sections.SndBankE), typeof(Sections.SndBankE) },
-         { nameof(Sections.SndMapE), typeof(Sections.SndMapE) },
-         { nameof(Sections.SndEventIdList), typeof(Sections.SndEventIdList) },
-         { nameof(Sections.SndResIdList), typeof(Sections.SndResIdList) },
+         { nameof(LcbHeader), typeof(LcbHeader) },
+         { nameof(SndEventGroupList), typeof(SndEventGroupList) },
+         { nameof(SndBankE), typeof(SndBankE) },
+         { nameof(SndMapE), typeof(SndMapE) },
+         { nameof(SndEventIdList), typeof(SndEventIdList) },
+         { nameof(SndResIdList), typeof(SndResIdList) },
       };
    }
 }

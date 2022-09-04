@@ -15,6 +15,6 @@ namespace CPAScriptSerializer.Modules.IPT.Sections {
          { nameof(Joystick), typeof(Joystick) },
       };
 
-      public override Type CommandTypeFallback { get; }
+      public override Type CommandTypeFallback(string name) => null;
    }
 }
