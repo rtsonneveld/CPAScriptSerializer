@@ -25,7 +25,7 @@ namespace CPAScriptSerializer.Modules.SND.Sections.CSB {
          SectionId = sectionId[0 .. openTag];
       }
 
-      public override string SectionExportName => $"{SectionId}({ResourceType})";
+      public override string SectionExportId => $"{SectionId}({ResourceType})";
 
       public EnumResourceType ResourceType;
 

@@ -4,6 +4,7 @@ using System.IO;
 using CPAScriptSerializer.Modules.AI;
 using CPAScriptSerializer.Modules.IPT;
 using CPAScriptSerializer.Modules.SND;
+using CPAScriptSerializer.Modules.SPO;
 
 namespace CPAScriptSerializer
 {
@@ -20,9 +21,13 @@ namespace CPAScriptSerializer
          */
 
 
-         CPAScript csbTest = new CPAScript_CSB();
+         /*CPAScript csbTest = new CPAScript_CSB();
          csbTest.Read(File.OpenRead(Path.Combine(TestFilesDir, "SND", "nature.csb")));
-         csbTest.Write(File.OpenWrite(Path.Combine(TestFilesDir, "SND", "nature_WriteTest.csb")));
+         csbTest.Write(File.OpenWrite(Path.Combine(TestFilesDir, "SND", "nature_WriteTest.csb")));*/
+
+         CPAScript spoTest = new CPAScript_SPO();
+         spoTest.Read(File.OpenRead(Path.Combine(TestFilesDir, "Gymg", "Gymg.spo")));
+         spoTest.Write(File.OpenWrite(Path.Combine(TestFilesDir, "Gymg", "Gymg_WriteTest.spo")));
 
          /*
          foreach (var file in Directory.GetFiles(Path.Combine(TestFilesDir, "IPT"))) {

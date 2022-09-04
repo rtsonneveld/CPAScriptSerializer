@@ -101,17 +101,9 @@ namespace CPAScriptSerializer.Commands
          foreach (var field in instanceFields) {
             var fieldSettings = field.GetCustomAttribute<CommandParameterAttribute>();
             if (fieldSettings != null) {
+
                var value = field.GetValue(this);
-               if (value != null) {
-
-                  string valueString = value.ToString();
-
-                  if (valueString != null && value is bool) {
-                     valueString = valueString.ToUpper();
-                  }
-
-                  parameterList.Add(valueString);
-               }
+               parameterList.Add(Parameter.ExportValue(value, fieldSettings));
             }
          }
 

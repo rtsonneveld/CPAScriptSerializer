@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using CPAScriptSerializer.Modules.SPO.Commands.Matrix;
+
+namespace CPAScriptSerializer.CPAScriptSerializer.Modules.SPO.Sections {
+   public class Matrix : CPAScriptSection {
+      public Matrix(string sectionId) : base(sectionId) { }
+
+      public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
+      {
+         {nameof(MatrixTranslation), typeof(MatrixTranslation)},
+         {nameof(MatrixRotation), typeof(MatrixRotation)},
+         {nameof(MatrixScale), typeof(MatrixScale)},
+      };
+      public override Type CommandTypeFallback(string name) => null;
+   }
+}

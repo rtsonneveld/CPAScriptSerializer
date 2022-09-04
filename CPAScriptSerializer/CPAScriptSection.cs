@@ -13,9 +13,13 @@ namespace CPAScriptSerializer
       public string SectionId;
 
       /// <summary>
-      /// Override this to change how this section is exported, by default this returns SectionId
+      /// Override this to change how the ID of this section is exported, by default this returns SectionId
       /// </summary>
-      public virtual string SectionExportName => SectionId;
+      public virtual string SectionExportId => SectionId;
+      /// <summary>
+      /// Override this to change how the type name of this section is exported.
+      /// </summary>
+      public virtual string SectionExportType => GetType().Name;
 
       /// <summary>
       /// Dictionary values must be a Type that inherits CPAScriptCommand
@@ -135,7 +139,7 @@ namespace CPAScriptSerializer
 
       public void Write(ref int indent, StreamWriter writer)
       {
-         writer.WriteLine($"{CPAScript.Indent(indent)}{CPAScript.MarkSectionBegin}{GetType().Name}:{SectionExportName}");
+         writer.WriteLine($"{CPAScript.Indent(indent)}{CPAScript.MarkSectionBegin}{SectionExportType}:{SectionExportId}");
          //WriteContent(writer);
 
          indent++;
