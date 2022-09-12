@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CPAScriptSerializer.Commands;
 using CPAScriptSerializer.Modules.SND.Commands;
 using CPAScriptSerializer.Modules.SND.Commands.CSB;
 
@@ -7,6 +8,9 @@ namespace CPAScriptSerializer.Modules.SND.Sections.CSB
 {
    public class SndEventE : CPAScriptSection
    {
+      [CommandParameter(0)]
+      public string SndEventM;
+
       public SndEventE(string sectionId) : base(sectionId)
       {
       }

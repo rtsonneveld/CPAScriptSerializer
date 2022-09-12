@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using CPAScriptSerializer.Modules.SPO.Commands.Matrix;
 
-namespace CPAScriptSerializer.CPAScriptSerializer.Modules.SPO.Sections {
+namespace CPAScriptSerializer.Modules.SPO.Sections {
    public class Matrix : CPAScriptSection {
       public Matrix(string sectionId) : base(sectionId) { }
 

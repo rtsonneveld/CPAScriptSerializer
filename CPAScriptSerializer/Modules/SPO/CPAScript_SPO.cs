@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using CPAScriptSerializer.CPAScriptSerializer.Modules.SPO.Sections;
 using CPAScriptSerializer.Modules.SPO.Sections;
 
 namespace CPAScriptSerializer.Modules.SPO {
@@ -11,7 +10,7 @@ namespace CPAScriptSerializer.Modules.SPO {
       {
          { nameof(SuperObject), typeof(SuperObject) },
          { nameof(Matrix), typeof(Matrix) },
-         { Edit_ListModifSuperObject.SectionName, typeof(Edit_ListModifSuperObject) },
+         { EditListModifSuperObject.Name, typeof(EditListModifSuperObject) },
       };
    }
 }

@@ -66,6 +66,7 @@ namespace CPAScriptSerializer
       public const char MarkParamSeparator = ',';
       public const char MarkFormatBegin = '[';
       public const char MarkFormatEnd = ']';
+      public const char MarkString = '\"';
       public const char IndentCharacter = '\t';
 
       public List<CPAScriptItem> Items;

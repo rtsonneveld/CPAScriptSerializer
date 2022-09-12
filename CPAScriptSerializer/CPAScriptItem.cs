@@ -24,5 +24,11 @@ namespace CPAScriptSerializer
       /// <param name="indent">The current indent level, increase and decrease where necessary - <b>the implementing function is responsible for writing the indentation!</b></param>
       /// <param name="writer">The writer</param>
       public void Write(ref int indent, StreamWriter writer);
+
+
+      /// <summary>
+      /// Override this method to validate any parameters
+      /// </summary>
+      public void ValidateParameters() { }
    }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CPAScriptSerializer.Commands;
 using CPAScriptSerializer.Modules.SND.Commands.CSB;
 using CPAScriptSerializer.Modules.SND.Commands.CSB.SndResourceDiskOptions;
 using CPAScriptSerializer.Modules.SND.Commands.CSB.SndResourceDiskOptions.General;
@@ -15,18 +16,9 @@ using ResRandom = CPAScriptSerializer.Modules.SND.Commands.CSB.SndResourceDiskOp
 namespace CPAScriptSerializer.Modules.SND.Sections.CSB {
    public class SndResourceDisk : CPAScriptSection {
 
-      public SndResourceDisk(string sectionId) : base(sectionId)
-      {
-         int openTag = sectionId.IndexOf('(');
-         int closeTag = sectionId.IndexOf(')');
-         string resourceType = sectionId[(openTag+1) .. closeTag];
-         ResourceType = Enum.Parse<EnumResourceType>(resourceType);
+      public SndResourceDisk(string sectionId) : base(sectionId) { }
 
-         SectionId = sectionId[0 .. openTag];
-      }
-
-      public override string SectionExportId => $"{SectionId}({ResourceType})";
-
+      [CommandParameter(0)]
       public EnumResourceType ResourceType;
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()

@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using CPAScriptSerializer.Modules.IPT;
+using System.Linq;
+using System.Reflection;
+using CPAScriptSerializer.Modules.GLI.Enums;
 using CPAScriptSerializer.Modules.IPT.Enums;
 using CPAScriptSerializer.Modules.SND.Enums;
 
 namespace CPAScriptSerializer.Commands
 {
-   public class Parameter
+   public partial class Parameter
    {
       public string Value;
 
@@ -19,6 +19,42 @@ namespace CPAScriptSerializer.Commands
          }
 
          Value = value;
+      }
+
+      public static void FillParameters(CPAScriptItem item, Parameter[] parameters)
+      {
+         var instanceFields = item.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
+
+         foreach (var field in instanceFields) {
+            var fieldSettings = field.GetCustomAttribute<CommandParameterAttribute>();
+            if (fieldSettings != null) {
+               if (fieldSettings.Index < parameters.Length) {
+
+                  object? fieldValue = null;
+
+                  if (field.FieldType.IsGenericType && field.FieldType.GetGenericTypeDefinition() == typeof(CPAScriptReference<>)) {
+
+                     Type myParameterizedSomeClass = typeof(CPAScriptReference<>).MakeGenericType(field.FieldType.GetGenericArguments()[0]);
+                     ConstructorInfo constr = myParameterizedSomeClass.GetConstructor(new Type[] { typeof(string) });
+                     fieldValue = constr?.Invoke(new object[] { parameters[fieldSettings.Index].Value });
+
+                  } else {
+
+                     // We need to find the implicit operator for the Parameter object
+                     MethodInfo converter = typeof(Parameter).GetMethods().FirstOrDefault(m =>
+                        m.Name == "op_Implicit" && m.ReturnParameter?.ParameterType == field.FieldType);
+
+                     if (converter != null) {
+                        fieldValue = converter.Invoke(null, new object[] {parameters[fieldSettings.Index]});
+                     } else {
+                        throw new Exception($"No implicit conversion found for field type {field.FieldType}!");
+                     }
+                  }
+
+                  field.SetValue(item, fieldValue);
+               }
+            }
+         }
       }
 
       public static implicit operator Parameter(string s) => new(s);
@@ -41,6 +77,7 @@ namespace CPAScriptSerializer.Commands
 
       public static implicit operator float(Parameter p) => float.Parse(p.Value);
       public static implicit operator double(Parameter p) => double.Parse(p.Value);
+
 
       // Nullables (optional parameters):
 
@@ -92,6 +129,25 @@ namespace CPAScriptSerializer.Commands
       public static implicit operator EnumStorageType(Parameter p) => Enum.Parse<EnumStorageType>(p.Value);
       public static implicit operator EnumResourceType(Parameter p) => Enum.Parse<EnumResourceType>(p.Value);
       public static implicit operator EnumZipFormat(Parameter p) => Enum.Parse<EnumZipFormat>(p.Value);
+      public static implicit operator EnumEventType(Parameter p) => Enum.Parse<EnumEventType>(p.Value);
+
+      #endregion
+
+      #region GLI
+
+      public static implicit operator EnumElementType(Parameter p) => Enum.Parse<EnumElementType>(p.Value);
+      public static implicit operator EnumMaterialType(Parameter p) => Enum.Parse<EnumMaterialType>(p.Value);
+      public static implicit operator EnumChromaKeyEnabled(Parameter p) => Enum.Parse<EnumChromaKeyEnabled>(p.Value);
+      public static implicit operator EnumChromaKeyFilter(Parameter p) => Enum.Parse<EnumChromaKeyFilter>(p.Value);
+      public static implicit operator EnumPriority(Parameter p) => Enum.Parse<EnumPriority>(p.Value);
+      public static implicit operator EnumQuality(Parameter p) => Enum.Parse<EnumQuality>(p.Value);
+      public static implicit operator CPAScriptSerializer.Modules.GMT.Enums.EnumOnOffToggle(Parameter p) => Enum.Parse<CPAScriptSerializer.Modules.GMT.Enums.EnumOnOffToggle>(p.Value);
+
+      #endregion
+
+      #region GMT
+
+      public static implicit operator CPAScriptSerializer.Modules.GLI.Enums.EnumOnOffToggle(Parameter p) => Enum.Parse<CPAScriptSerializer.Modules.GLI.Enums.EnumOnOffToggle>(p.Value);
 
       #endregion
 
@@ -100,13 +156,17 @@ namespace CPAScriptSerializer.Commands
       public static string ExportValue(object? value, CommandParameterAttribute fieldSettings)
       {
          if (value == null) {
-            throw new Exception("value was null");
+            throw new Exception("Value was null");
          }
 
          string valueString = value.ToString();
 
          if (valueString == null) {
             throw new Exception("valueString was null");
+         }
+
+         if (value.GetType().IsGenericType && value.GetType().GetGenericTypeDefinition() == typeof(CPAScriptReference<>)) {
+            return '"' + valueString + '"';
          }
 
          return value switch

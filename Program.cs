@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using CPAScriptSerializer.Modules.AI;
+using CPAScriptSerializer.Modules.GLI;
 using CPAScriptSerializer.Modules.IPT;
 using CPAScriptSerializer.Modules.SND;
 using CPAScriptSerializer.Modules.SPO;
@@ -14,31 +15,32 @@ namespace CPAScriptSerializer
 
       static void Main(string[] args)
       {
-         /*
-         CPAScript lcbTest = new CPAScript_LCB();
-         lcbTest.Read(File.OpenRead(Path.Combine(TestFilesDir, "SND","Rayman2.lcb")));
-         lcbTest.Write(File.OpenWrite(Path.Combine(TestFilesDir, "SND","Rayman2_WriteTest.lcb")));
-         */
+         /*ReadAndWriteTest<CPAScript_LCB>(Path.Combine(TestFilesDir, "SND","Rayman2.lcb"));
+         ReadAndWriteTest<CPAScript_CSB>(Path.Combine(TestFilesDir, "SND", "nature.csb"));*/
+         //ReadAndWriteTest<CPAScript_SPO>(Path.Combine(TestFilesDir, "Gymg", "Gymg.spo"));
+         ReadAndWriteTest<CPAScript_MOD>(Path.Combine(TestFilesDir, "Gymg", "Gymg.mod"));
 
-
-         /*CPAScript csbTest = new CPAScript_CSB();
-         csbTest.Read(File.OpenRead(Path.Combine(TestFilesDir, "SND", "nature.csb")));
-         csbTest.Write(File.OpenWrite(Path.Combine(TestFilesDir, "SND", "nature_WriteTest.csb")));*/
-
-         CPAScript spoTest = new CPAScript_SPO();
-         spoTest.Read(File.OpenRead(Path.Combine(TestFilesDir, "Gymg", "Gymg.spo")));
-         spoTest.Write(File.OpenWrite(Path.Combine(TestFilesDir, "Gymg", "Gymg_WriteTest.spo")));
-
-         /*
          foreach (var file in Directory.GetFiles(Path.Combine(TestFilesDir, "IPT"))) {
-            CPAScript iptTest = new CPAScript_IPT();
-            iptTest.Read(File.OpenRead(file));
+            //ReadAndWriteTest<CPAScript_IPT>(file);
+         }
 
-            string newFileName = Path.GetFileNameWithoutExtension(file) + "_writetest" + Path.GetExtension(file);
-            iptTest.Write(File.OpenWrite(Path.Combine(Path.GetDirectoryName(file), "Output", newFileName)));
-         }*/
+         //Debug.WriteLine("Finished");
+      }
 
-         Debug.WriteLine("Finished");
+      private static void ReadAndWriteTest<T>(string path) where T: CPAScript, new()
+      {
+         const string OutputPostfix = "_output";
+         
+         if (Path.GetFileNameWithoutExtension(path).EndsWith(OutputPostfix)) {
+            return;
+         }
+         string outputPath = Path.Combine(Path.GetDirectoryName(path), Path.GetFileNameWithoutExtension(path) + OutputPostfix +
+                             Path.GetExtension(path));
+
+         CPAScript script = new T();
+         script.Read(File.OpenRead(path));
+         File.Delete(outputPath);
+         script.Write(File.OpenWrite(outputPath));
       }
    }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using CPAScriptSerializer.Commands;
@@ -32,10 +33,13 @@ namespace CPAScriptSerializer
       public abstract Type CommandTypeFallback(string name);
 
       public List<CPAScriptItem> Items;
+      public string Format;
 
       public CPAScriptSection(string sectionId)
       {
-         SectionId = sectionId;
+         Command.Parse(sectionId, out string commandName, out Format, out var parameters);
+         SectionId = commandName;
+         Fill(parameters);
          Items = new List<CPAScriptItem>();
       }
 
@@ -86,6 +90,8 @@ namespace CPAScriptSerializer
 
             line = reader.ReadLine();
          }
+
+         this.ValidateParameters();
       }
       
       // Parses a single line in a section
@@ -137,9 +143,44 @@ namespace CPAScriptSerializer
          return lines;
       }
 
+
+      /// <summary>
+      /// Fills the fields of this object marked with the "CommandParameter" attribute using the given Parameter array
+      /// </summary>
+      /// <param name="parameters">The parameter array to fill in</param>
+      private void Fill(Parameter[] parameters)
+      {
+         Parameter.FillParameters(this, parameters);
+
+         ValidateParameters();
+      }
+
       public void Write(ref int indent, StreamWriter writer)
       {
-         writer.WriteLine($"{CPAScript.Indent(indent)}{CPAScript.MarkSectionBegin}{SectionExportType}:{SectionExportId}");
+         List<string> parameterList = new List<string>();
+
+         var instanceFields = GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
+
+         foreach (var field in instanceFields) {
+            var fieldSettings = field.GetCustomAttribute<CommandParameterAttribute>();
+            if (fieldSettings != null) {
+
+               var value = field.GetValue(this);
+               if (value != null) {
+                  parameterList.Add(Parameter.ExportValue(value, fieldSettings));
+               }
+            }
+         }
+
+         string format = string.IsNullOrWhiteSpace(Format)
+            ? string.Empty
+            : CPAScript.MarkFormatBegin + Format + CPAScript.MarkFormatEnd;
+         string parameters = string.Join(CPAScript.MarkParamSeparator, parameterList);
+         if (!string.IsNullOrWhiteSpace(parameters)) {
+            parameters = $"{CPAScript.MarkParamBegin}{parameters}{CPAScript.MarkParamEnd}";
+         }
+
+         writer.WriteLine($"{CPAScript.Indent(indent)}{CPAScript.MarkSectionBegin}{SectionExportType}:{format}{SectionExportId}{parameters}");
          //WriteContent(writer);
 
          indent++;
@@ -152,5 +193,10 @@ namespace CPAScriptSerializer
 
          writer.WriteLine(CPAScript.Indent(indent)+CPAScript.MarkSectionEnd);
       }
+
+      /// <summary>
+      /// Override this method to add validation for any parameters
+      /// </summary>
+      public virtual void ValidateParameters() { }
    }
 }

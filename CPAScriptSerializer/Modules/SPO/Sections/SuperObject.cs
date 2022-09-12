@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using CPAScriptSerializer.Modules.SPO.Commands.SuperObject;
 
-namespace CPAScriptSerializer.CPAScriptSerializer.Modules.SPO.Sections {
+namespace CPAScriptSerializer.Modules.SPO.Sections {
    public class SuperObject : CPAScriptSection {
       public SuperObject(string sectionId) : base(sectionId) { }
 

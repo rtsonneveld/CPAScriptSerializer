@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CPAScriptSerializer.Commands;
 using CPAScriptSerializer.Modules.IPT.Commands;
 
 namespace CPAScriptSerializer.Modules.IPT.Sections {
    
-   public class KeyDefine : CPAScriptSection {
+   public class KeyDefine : CPAScriptSection
+   {
+      [CommandParameter(0)]
+      public int KeyMaxNumber;
+
       public KeyDefine(string sectionId) : base(sectionId)
       {
       }

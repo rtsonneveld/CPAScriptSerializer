@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -23,7 +24,7 @@ namespace CPAScriptSerializer.Commands
       {
          // Command
          var paramBegin = line.IndexOf(CPAScript.MarkParamBegin);
-         var paramEnd = line.IndexOf(CPAScript.MarkParamEnd);
+         var paramEnd = line.LastIndexOf(CPAScript.MarkParamEnd);
 
          var formatBegin = line.IndexOf(CPAScript.MarkFormatBegin);
          var formatEnd = line.IndexOf(CPAScript.MarkFormatEnd);
@@ -40,9 +41,12 @@ namespace CPAScriptSerializer.Commands
          // Parse parameters
          parameters = Array.Empty<Parameter>();
 
-         if (paramBegin > 0 && paramEnd > paramBegin + 1) {
-            parameters = Array.ConvertAll(line[(paramBegin + 1)..(paramEnd)].Split(CPAScript.MarkParamSeparator),
-               item => (Parameter)item);
+         if (paramBegin >= 0 && paramEnd > paramBegin + 1) {
+            string paramPart = line[(paramBegin + 1)..(paramEnd)];
+            string[] splitLine = paramPart.SplitSeparatedValues(CPAScript.MarkParamSeparator, CPAScript.MarkString);
+
+            parameters = Array.ConvertAll(splitLine,
+            item => (Parameter)item);
          }
 
          // Parse format
@@ -67,24 +71,9 @@ namespace CPAScriptSerializer.Commands
       /// <param name="parameters">The parameter array to fill in</param>
       private void Fill(Parameter[] parameters)
       {
-         var instanceFields = GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
+         Parameter.FillParameters(this, parameters);
 
-         foreach (var field in instanceFields) {
-            var fieldSettings = field.GetCustomAttribute<CommandParameterAttribute>();
-            if (fieldSettings != null) {
-               if (fieldSettings.Index < parameters.Length) {
-                  // We need to find the implicit operator for the Parameter object
-                  var converter = typeof(Parameter).GetMethods().FirstOrDefault(m =>
-                     m.Name == "op_Implicit" && m.ReturnParameter?.ParameterType == field.FieldType);
-
-                  if (converter != null) {
-                     field.SetValue(this, converter.Invoke(null, new object[] { parameters[fieldSettings.Index] }));
-                  } else {
-                     throw new Exception($"No implicit conversion found for field type {field.FieldType}!");
-                  }
-               }
-            }
-         }
+         ValidateParameters();
       }
 
       /// <summary>
@@ -94,6 +83,7 @@ namespace CPAScriptSerializer.Commands
       /// <param name="writer">The stream writer</param>
       public virtual void Write(ref int indent, StreamWriter writer)
       {
+         ValidateParameters();
          List<string> parameterList = new List<string>();
 
          var instanceFields = GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
@@ -103,7 +93,9 @@ namespace CPAScriptSerializer.Commands
             if (fieldSettings != null) {
 
                var value = field.GetValue(this);
-               parameterList.Add(Parameter.ExportValue(value, fieldSettings));
+               if (value != null) {
+                  parameterList.Add(Parameter.ExportValue(value, fieldSettings));
+               }
             }
          }
 
@@ -124,5 +116,10 @@ namespace CPAScriptSerializer.Commands
                           $"{parameters}" +
                           $"{CPAScript.MarkParamEnd}");
       }
+
+      /// <summary>
+      /// Override this method to add validation for any parameters
+      /// </summary>
+      public virtual void ValidateParameters() { }
    }
 }

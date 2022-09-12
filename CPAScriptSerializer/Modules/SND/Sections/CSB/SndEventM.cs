@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CPAScriptSerializer.Commands;
 using CPAScriptSerializer.Modules.SND.Commands.CSB;
 using CPAScriptSerializer.Modules.SND.Commands.CSB.SndEventM;
+using CPAScriptSerializer.Modules.SND.Enums;
 
 namespace CPAScriptSerializer.Modules.SND.Sections.CSB {
    public class SndEventM : CPAScriptSection {
+
+      [CommandParameter(0)]
+      public EnumEventType EventType;
+
       public SndEventM(string sectionId) : base(sectionId)
       {
       }
