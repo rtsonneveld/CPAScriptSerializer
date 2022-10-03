@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="CPAScriptSerializer\Modules\GAM\Commands\CAR\Brain\" />
     <Folder Include="TestFiles\" />
   </ItemGroup>
 

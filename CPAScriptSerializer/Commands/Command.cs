@@ -14,6 +14,11 @@ namespace CPAScriptSerializer.Commands
       public string Format;
 
       /// <summary>
+      /// Override this method to use a different export name
+      /// </summary>
+      public virtual string ExportName => this.GetType().Name;
+
+      /// <summary>
       /// Parses a command from a line
       /// </summary>
       /// <param name="line">The line to parse, e.g. SetNextFreeGroupId[%lu](101)</param>
@@ -110,7 +115,7 @@ namespace CPAScriptSerializer.Commands
          string parameters = string.Join(CPAScript.MarkParamSeparator, parameterList);
 
          writer.WriteLine($"{CPAScript.Indent(indent)}" +
-                          $"{Name}" +
+                          $"{(string.IsNullOrWhiteSpace(Name) ? ExportName : Name)}" +
                           $"{format}" +
                           $"{CPAScript.MarkParamBegin}" +
                           $"{parameters}" +

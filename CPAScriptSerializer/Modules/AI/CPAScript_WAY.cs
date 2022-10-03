@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CPAScriptSerializer.Modules.AI.Sections.WAY;
 
 namespace CPAScriptSerializer.Modules.AI
 {
@@ -8,11 +9,11 @@ namespace CPAScriptSerializer.Modules.AI
    {
       public override Dictionary<string, Type> SectionTypes { get; } = new()
       {
-         { nameof(Sections.Isolate), typeof(Sections.Isolate) },
-         { nameof(Sections.InWay), typeof(Sections.InWay) },
-         { nameof(Sections.WPGraph), typeof(Sections.WPGraph) },
-         { nameof(Sections.WPSommet), typeof(Sections.WPSommet) },
-         { nameof(Sections.Waypoint), typeof(Sections.Waypoint) },
+         { nameof(Isolate), typeof(Isolate) },
+         { nameof(InWay), typeof(InWay) },
+         { nameof(WPGraph), typeof(WPGraph) },
+         { nameof(WPSommet), typeof(WPSommet) },
+         { nameof(Waypoint), typeof(Waypoint) },
       };
    }
 }

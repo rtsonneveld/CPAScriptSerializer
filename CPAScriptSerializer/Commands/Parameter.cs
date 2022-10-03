@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using CPAScriptSerializer.Modules.AI.Enums;
 using CPAScriptSerializer.Modules.GLI.Enums;
 using CPAScriptSerializer.Modules.IPT.Enums;
 using CPAScriptSerializer.Modules.SND.Enums;
@@ -115,6 +116,20 @@ namespace CPAScriptSerializer.Commands
          string.IsNullOrWhiteSpace(p.Value) ? null : double.Parse(p.Value);
 
       #region Enums
+
+      #region AI
+
+      public static implicit operator EnumCondition(Parameter p) => Enum.Parse<EnumCondition>(p.Value);
+      public static implicit operator EnumDsgVarSaveType(Parameter p) => Enum.Parse<EnumDsgVarSaveType>(p.Value);
+      public static implicit operator EnumDsgVarInitType(Parameter p) => Enum.Parse<EnumDsgVarInitType>(p.Value);
+      public static implicit operator EnumField(Parameter p) => Enum.Parse<EnumField>(p.Value);
+      public static implicit operator EnumFunction(Parameter p) => Enum.Parse<EnumFunction>(p.Value);
+      public static implicit operator EnumKeyWord(Parameter p) => Enum.Parse<EnumKeyWord>(p.Value);
+      public static implicit operator EnumMetaAction(Parameter p) => Enum.Parse<EnumMetaAction>(p.Value);
+      public static implicit operator EnumOperator(Parameter p) => EnumOperatorUtils.Parse(p.Value);
+      public static implicit operator EnumProcedure(Parameter p) => Enum.Parse<EnumProcedure>(p.Value);
+
+      #endregion
 
       #region IPT
 
