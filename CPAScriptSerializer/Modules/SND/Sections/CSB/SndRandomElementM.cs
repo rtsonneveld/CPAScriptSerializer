@@ -15,6 +15,6 @@ namespace CPAScriptSerializer.Modules.SND.Sections.CSB {
          { nameof(SetProbability), typeof(SetProbability) },
          { nameof(SetElementCanBeChoosenTwice), typeof(SetElementCanBeChoosenTwice) },
       };
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

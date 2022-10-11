@@ -52,6 +52,6 @@ namespace CPAScriptSerializer.Modules.AI.Sections.DEC {
          {nameof(TypeSaveVariable), typeof(TypeSaveVariable)},
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

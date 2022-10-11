@@ -54,7 +54,7 @@ namespace CPAScriptSerializer
    /// Each module can register callbacks
    /// Each line is read in SCR_Pars.c, fn_i_Pars_Line
    /// </summary>
-   public abstract class CPAScript
+   public abstract partial class CPAScript
    {
       public const char MarkSectionBegin = '{';
       public const char MarkSectionEnd = '}';

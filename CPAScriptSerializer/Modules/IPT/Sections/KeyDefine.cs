@@ -20,6 +20,6 @@ namespace CPAScriptSerializer.Modules.IPT.Sections {
          { nameof(NewKeyDefine), typeof(NewKeyDefine) }
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

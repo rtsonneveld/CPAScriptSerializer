@@ -47,7 +47,7 @@ namespace CPAScriptSerializer.Modules.AI.Enums {
             case ".Y:=": return EnumOperator.Operator_SetVectorY;
             case ".Z:=": return EnumOperator.Operator_SetVectorZ;
 
-            default: return Enum.Parse<EnumOperator>(value);
+            default: return Enum.Parse<EnumOperator>(value, true);
          }
       }
 

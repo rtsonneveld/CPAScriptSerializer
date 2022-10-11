@@ -4,6 +4,10 @@ using System.Text;
 using CPAScriptSerializer.Modules.SND.Sections.CSB;
 
 namespace CPAScriptSerializer.Modules.SND {
+
+   /// <summary>
+   /// CPA Sound Bank? (unconfirmed)
+   /// </summary>
    public class CPAScript_CSB : CPAScript {
       public override Dictionary<string, Type> SectionTypes { get; } = new()
       {

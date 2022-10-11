@@ -11,6 +11,7 @@ namespace CPAScriptSerializer.Modules.GAM.Enums {
       WhenSavedGameJustLoaded,
       NeverBackWhenTaken,
       NumberOfObjectInit,
-      WhenGeneratorIsDesactivated
-	}
+      WhenGeneratorIsDesactivated,
+      WhenGoOutOfZone
+   }
 }

@@ -41,6 +41,6 @@ namespace CPAScriptSerializer.Modules.MEC.Sections {
          {nameof(MaxSpeed), typeof(MaxSpeed)},
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

@@ -10,6 +10,6 @@ namespace CPAScriptSerializer.Modules.AI.Sections.WAY
       }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>() { };
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

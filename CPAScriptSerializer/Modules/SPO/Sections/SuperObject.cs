@@ -14,6 +14,6 @@ namespace CPAScriptSerializer.Modules.SPO.Sections {
          {nameof(Flags), typeof(Flags)},
          {nameof(Transparency), typeof(Transparency)},
       };
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

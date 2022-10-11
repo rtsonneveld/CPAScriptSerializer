@@ -18,6 +18,6 @@ namespace CPAScriptSerializer.Modules.SND.Sections.LCB
          { nameof(SetNextFreeGroupId), typeof(SetNextFreeGroupId) },
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

@@ -106,7 +106,7 @@ namespace CPAScriptSerializer.Modules.AI.Enums {
       Func_RepairCorruption,
       Func_MICRO_GetSoufleValue,
 
-      // Func1
+#region Func1
 
       Func_VitesseHorizontaleDuPerso,
       Func_VitesseVerticaleDuPerso,
@@ -234,7 +234,9 @@ namespace CPAScriptSerializer.Modules.AI.Enums {
       Func_GetBacklight,
       Func_DoneAnalogCalibration,
 
-      // FuncRay2
+      #endregion
+
+#region FuncRay2
 
       Func_LitPointsDeMagie,
       Func_LitPointsDeMagieMax,
@@ -300,6 +302,41 @@ namespace CPAScriptSerializer.Modules.AI.Enums {
       Func_GetCenterZDRType,
       Func_GetCenterZDDType,
       Func_TextAffiche,
-      Func_GetCPUCounter
+      Func_GetCPUCounter,
+      #endregion
+
+#region Cam
+      Proc_Cam_GetShiftTarget,
+      Proc_Cam_GetShiftPos,
+      Fct_Cam_GetDistMin,
+      Fct_Cam_GetDistMax,
+      Fct_Cam_GetBoundDistMin,
+      Fct_Cam_GetBoundDistMax,
+      Fct_Cam_GetAngleAlpha,
+      Fct_Cam_GetAngleShiftAlpha,
+      Fct_Cam_GetAngleTheta,
+      Fct_Cam_GetAngleShiftTheta,
+      Fct_Cam_GetLinearSpeed,
+      Fct_Cam_GetLinearIncreaseSpeed,
+      Fct_Cam_GetLinearDecreaseSpeed,
+      Fct_Cam_GetAngularSpeed,
+      Fct_Cam_GetAngularIncreaseSpeed,
+      Fct_Cam_GetAngularDecreaseSpeed,
+      Fct_Cam_GetTargetSpeed,
+      Fct_Cam_GetTargetIncreaseSpeed,
+      Fct_Cam_GetTargetDecreaseSpeed,
+      Fct_Cam_GetFocal,
+      Fct_Cam_GetZMin,
+      Fct_Cam_GetZMax,
+      Fct_Cam_GetTargetedSuperObject,
+      Fct_Cam_GetTypeOfViewport,
+      Fct_Cam_GetCameraOfViewport,
+      Fct_Cam_GetMainCamera,
+      Fct_Cam_ComputeTargetWithTgtPerso,
+      Fct_Cam_ComputeCurrentTarget,
+      Fct_Cam_GetSectorCameraType,
+      Fct_Cam_GetBestPos,
+#endregion
+
    }
 }

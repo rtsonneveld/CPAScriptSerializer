@@ -14,11 +14,13 @@ namespace CPAScriptSerializer.Modules.AI.Sections.AI {
          {nameof(CreateVariableDeclarationAIModel), typeof(CreateVariableDeclarationAIModel)},
          {nameof(CreateIntellAIModel), typeof(CreateIntellAIModel)},
          {nameof(CreateReflexAIModel), typeof(CreateReflexAIModel)},
+         {nameof(CreateRefAIModel), typeof(CreateRefAIModel)},
          {nameof(CreateMacroAIModel), typeof(CreateMacroAIModel)},
+         {nameof(CreateRefTree), typeof(CreateRefTree)},
          {nameof(CFast_IsC), typeof(CFast_IsC)},
          {nameof(CFast_FunctionIndex), typeof(CFast_FunctionIndex)},
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

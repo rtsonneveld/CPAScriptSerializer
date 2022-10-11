@@ -21,6 +21,6 @@ namespace CPAScriptSerializer.Modules.SND.Sections.LCB
          { nameof(LoadResource), typeof(LoadResource) },
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

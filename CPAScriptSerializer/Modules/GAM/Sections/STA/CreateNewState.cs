@@ -19,7 +19,11 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.STA {
          {nameof(Speed), typeof(Speed)},
          {nameof(TransitionStatusFlag), typeof(TransitionStatusFlag)},
          {nameof(LinkMechanics), typeof(LinkMechanics)},
+         {nameof(AddTargetState), typeof(AddTargetState)},
+         {nameof(NextState), typeof(NextState)},
+         {nameof(CustomBits), typeof(CustomBits)},
+         {nameof(ProhibitedTargetState), typeof(ProhibitedTargetState)},
       };
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

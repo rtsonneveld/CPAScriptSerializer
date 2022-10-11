@@ -15,6 +15,6 @@ namespace CPAScriptSerializer.Modules.AI.Sections.AI {
          { nameof(RealRef), typeof(RealRef) },
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

@@ -16,6 +16,6 @@ namespace CPAScriptSerializer.Modules.SND.Sections.LCB
          { nameof(SetEvent), typeof(SetEvent) },
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

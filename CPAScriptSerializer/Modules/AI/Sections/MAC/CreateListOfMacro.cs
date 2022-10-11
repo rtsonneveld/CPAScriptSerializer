@@ -13,6 +13,6 @@ namespace CPAScriptSerializer.Modules.AI.Sections.MAC {
          { nameof(CreateMacro), typeof(CreateMacro) }
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

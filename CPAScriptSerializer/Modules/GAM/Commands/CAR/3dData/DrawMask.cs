@@ -8,6 +8,6 @@ namespace CPAScriptSerializer.Modules.GAM.Commands.CAR._3dData {
    public class DrawMask : Command
    {
       [CommandParameter(0)]
-      public int Mask;
+      public uint Mask;
    }
 }

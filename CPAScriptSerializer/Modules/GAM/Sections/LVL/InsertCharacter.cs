@@ -15,8 +15,10 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.LVL {
          { nameof(MatrixRotation), typeof(MatrixRotation) },
          { nameof(MatrixScale), typeof(MatrixScale) },
          { nameof(CharacterFlags), typeof(CharacterFlags) },
+         { nameof(CharacterIsAlwaysActive), typeof(CharacterIsAlwaysActive) },
+         { nameof(Transparency), typeof(Transparency) },
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

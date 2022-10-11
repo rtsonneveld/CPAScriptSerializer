@@ -12,11 +12,12 @@ namespace CPAScriptSerializer.Modules.AI
    {
       public override Dictionary<string, Type> SectionTypes { get; } = new()
       {
-         {nameof(CreateIntelligence), typeof(CreateIntelligence)},
+         { nameof(CreateIntelligence), typeof(CreateIntelligence )},
 
          // Subsections
-         {nameof(CreateComport), typeof(CreateComport)},
-         {nameof(CreateRule), typeof(CreateRule) },
+         { nameof(CreateComport), typeof(CreateComport) },
+         { nameof(CreateRule), typeof(CreateRule) },
+         { nameof(CreateSchedule), typeof(CreateSchedule) },
       };
    }
 }

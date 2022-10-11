@@ -22,6 +22,6 @@ namespace CPAScriptSerializer.Modules.GLI.Sections {
          {nameof(AddUV), typeof(AddUV)},
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

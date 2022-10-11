@@ -20,6 +20,6 @@ namespace CPAScriptSerializer.Modules.GMT.Sections {
          {nameof(AddTexture), typeof(AddTexture)},
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

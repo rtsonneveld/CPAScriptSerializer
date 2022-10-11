@@ -12,6 +12,6 @@ namespace CPAScriptSerializer.Modules.SPO.Sections {
          {nameof(MatrixRotation), typeof(MatrixRotation)},
          {nameof(MatrixScale), typeof(MatrixScale)},
       };
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

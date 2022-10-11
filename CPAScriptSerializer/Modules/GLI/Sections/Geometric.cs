@@ -27,12 +27,13 @@ namespace CPAScriptSerializer.Modules.GLI.Sections {
          { nameof(AddElement), typeof(AddElement) },
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
 
       public override void ValidateParameters()
       {
          base.ValidateParameters();
 
+         // TODO: add checks
          //if (NbPoints != Items.Where(item is Point))
       }
    }

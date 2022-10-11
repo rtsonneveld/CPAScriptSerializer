@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Folder Include="CPAScriptSerializer\Modules\GAM\Commands\CAR\Brain\" />
+    <Folder Include="CPAScriptSerializer\Modules\SNA\Enums\" />
     <Folder Include="TestFiles\" />
   </ItemGroup>
 

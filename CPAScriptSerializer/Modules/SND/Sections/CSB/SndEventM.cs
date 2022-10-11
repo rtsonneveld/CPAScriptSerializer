@@ -28,6 +28,6 @@ namespace CPAScriptSerializer.Modules.SND.Sections.CSB {
          { nameof(SetDynamic), typeof(SetDynamic) },
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

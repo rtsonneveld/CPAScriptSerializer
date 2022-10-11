@@ -21,6 +21,6 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.CAR.Character_ {
          { nameof(TooFarLimit), typeof(TooFarLimit) },
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

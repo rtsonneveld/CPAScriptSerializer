@@ -20,6 +20,6 @@ namespace CPAScriptSerializer.Modules.GLI.Sections {
          { nameof(ZWrite), typeof(ZWrite) },
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

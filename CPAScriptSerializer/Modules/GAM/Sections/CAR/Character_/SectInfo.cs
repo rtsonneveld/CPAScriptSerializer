@@ -7,6 +7,6 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.CAR.Character_ {
       public SectInfo(string sectionId) : base(sectionId) { }
 
       public override Dictionary<string, Type> CommandTypes { get; }
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

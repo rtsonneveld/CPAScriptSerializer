@@ -13,6 +13,6 @@ namespace CPAScriptSerializer.Modules.SND.Sections.CSB {
          { nameof(SndRandomElementM), typeof(SndRandomElementM) },
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

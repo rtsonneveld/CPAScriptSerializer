@@ -12,6 +12,6 @@ namespace CPAScriptSerializer.Modules.IPT.Sections {
          { nameof(AddRef), typeof(AddRef) },
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

@@ -11,8 +11,9 @@ namespace CPAScriptSerializer.Modules.AI.Sections.RULRFX.CreateIntelligence_ {
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {
          { nameof(CreateRule), typeof(CreateRule) },
+         { nameof(CreateSchedule), typeof(CreateSchedule) },
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using CPAScriptSerializer.Commands;
 using CPAScriptSerializer.Modules.AI.Commands.RULRFX.Nodes;
+using String = CPAScriptSerializer.Modules.AI.Commands.RULRFX.Nodes.String;
 
 namespace CPAScriptSerializer.Modules.AI.Sections.RULRFX.CreateIntelligence_.CreateComport_ {
    public class CreateRule : CPAScriptSection
@@ -29,6 +30,7 @@ namespace CPAScriptSerializer.Modules.AI.Sections.RULRFX.CreateIntelligence_.Cre
          {nameof(DsgVar), typeof(DsgVar)},
          {nameof(DsgVarRef), typeof(DsgVarRef)},
          {nameof(Real), typeof(Real)},
+         {"Reak", typeof(Real)}, // There's a typo somewhere
          {nameof(RealRef), typeof(RealRef)},
          {nameof(BeginMacro), typeof(BeginMacro)},
          {nameof(EndMacro), typeof(EndMacro)},
@@ -61,6 +63,6 @@ namespace CPAScriptSerializer.Modules.AI.Sections.RULRFX.CreateIntelligence_.Cre
          {nameof(MacroRef), typeof(MacroRef)},
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

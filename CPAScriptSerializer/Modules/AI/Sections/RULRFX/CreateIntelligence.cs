@@ -13,6 +13,6 @@ namespace CPAScriptSerializer.Modules.AI.Sections.RULRFX {
          { nameof(CreateComport), typeof(CreateComport) }
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

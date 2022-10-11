@@ -4,6 +4,7 @@ using System.Text;
 
 namespace CPAScriptSerializer.Modules.AI.Enums {
    public enum EnumCondition {
+
       Cond_And,
       Cond_Or,
       Cond_Not,
@@ -79,7 +80,7 @@ namespace CPAScriptSerializer.Modules.AI.Enums {
       Cond_DS_CheckStyletRotation,
       Cond_DS_CheckStyletGratter,
 
-      // Cond1
+#region Cond1
       Cond_ZDMCollideWithObstacle,
       Cond_IsZDMCollideWithWall,
       Cond_IsZDMCollideWithGround,
@@ -149,6 +150,32 @@ namespace CPAScriptSerializer.Modules.AI.Enums {
       Cond_IsShapnessMax,
       COND_IsDataCorrupt,
       COND_IsCheatMenu,
-      COND_IsUSBuild
+      COND_IsUSBuild,
+#endregion
+
+      #region CAM
+      Cond_Cam_IsActive,
+      Cond_Cam_IsViewportOwner,
+      Cond_Cam_IsFlagNoDynamicTarget,
+      Cond_Cam_IsFlagNoAverageMoveTgtPerso,
+      Cond_Cam_IsFlagNoParseCutAngle,
+      Cond_Cam_IsFlagNoVisibility,
+      Cond_Cam_IsFlagNoVisibilityWithDynHie,
+      Cond_Cam_IsFlagNoDynChangeTheta,
+      Cond_Cam_IsFlagNoShiftUntilPosReached,
+      Cond_Cam_IsFlagNoDynSpeed,
+      Cond_Cam_IsFlagNoLinearParsing,
+      Cond_Cam_IsFlagNoLinearInertia,
+      Cond_Cam_IsFlagNoAngularParsing,
+      Cond_Cam_IsFlagNoAngularInertia,
+      Cond_Cam_IsFlagNoTargetParsing,
+      Cond_Cam_IsFlagNoTargetInertia,
+      Cond_Cam_IsFlagNoObstacle,
+      Cond_Cam_IsFlagFixedOrientation,
+      Cond_Cam_IsFlagForcedPosition,
+      Cond_Cam_IsFlagForcedTarget,
+      Cond_Cam_IsFlagForcedAxis,
+#endregion
+
    }
 }

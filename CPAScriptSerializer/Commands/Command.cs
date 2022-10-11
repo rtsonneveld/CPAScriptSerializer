@@ -41,7 +41,7 @@ namespace CPAScriptSerializer.Commands
           * SetNextFreeGroupId - no parameters
           */
          commandName =
-            (formatBegin >= 0 ? line[0..formatBegin] : (paramBegin >= 0 ? line[0..paramBegin] : line)).Trim();
+            ((formatBegin >= 0 && (formatBegin<paramBegin||paramBegin==-1)) ? line[0..formatBegin] : (paramBegin >= 0 ? line[0..paramBegin] : line)).Trim();
 
          // Parse parameters
          parameters = Array.Empty<Parameter>();

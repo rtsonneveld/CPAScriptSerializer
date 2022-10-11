@@ -13,6 +13,6 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.CHL {
          {nameof(FileType), typeof(FileType)},
          {nameof(VersionNumber), typeof(VersionNumber)},
       };
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

@@ -30,6 +30,8 @@ namespace CPAScriptSerializer.Modules.GLI {
          { nameof(Geometric), typeof(Geometric) },
          { nameof(Matrix), typeof(Matrix) },
          { nameof(ElementIndexedTriangles), typeof(ElementIndexedTriangles) },
+         { nameof(ElementSpheres), typeof(ElementSpheres) },
+         { nameof(ElementAlignedBoxes), typeof(ElementAlignedBoxes) },
       };
    }
 }

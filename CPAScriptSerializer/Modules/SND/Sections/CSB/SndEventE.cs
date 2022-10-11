@@ -25,6 +25,6 @@ namespace CPAScriptSerializer.Modules.SND.Sections.CSB
          { nameof(SetParam4), typeof(SetParam4) },
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

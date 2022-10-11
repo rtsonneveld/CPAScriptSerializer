@@ -22,6 +22,6 @@ namespace CPAScriptSerializer.Modules.SND.Sections.CSB
          { nameof(SetEventGroupType), typeof(SetEventGroupType) },
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

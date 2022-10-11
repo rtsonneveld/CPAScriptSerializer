@@ -7,6 +7,8 @@ namespace CPAScriptSerializer.Modules.AI.Commands.AI {
    public class RealRef : Command
    {
       [CommandParameter(0)]
+      public string Name;
+      [CommandParameter(1)]
       public float Value;
    }
 }

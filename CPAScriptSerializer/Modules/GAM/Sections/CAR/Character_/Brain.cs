@@ -11,8 +11,9 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.CAR.Character_ {
       {
          { nameof(InitComportIntelligence), typeof(InitComportIntelligence) },
          { nameof(InitComportReflex), typeof(InitComportReflex) },
+         { nameof(InitVariables), typeof(InitVariables) },
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

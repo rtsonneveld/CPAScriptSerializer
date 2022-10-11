@@ -15,6 +15,6 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.CHL {
          { nameof(AddChannelName), typeof(AddChannelName) },
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

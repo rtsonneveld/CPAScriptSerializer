@@ -13,6 +13,6 @@ namespace CPAScriptSerializer.Modules.SND.Sections.CSB {
       {
          { nameof(LoadResource), typeof(LoadResource) },
       };
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

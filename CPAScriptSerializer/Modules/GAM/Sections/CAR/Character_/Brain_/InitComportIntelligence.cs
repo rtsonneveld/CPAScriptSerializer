@@ -15,6 +15,6 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.CAR.Character_.Brain_ {
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>() { };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

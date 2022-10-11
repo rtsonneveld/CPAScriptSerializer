@@ -10,6 +10,7 @@ namespace CPAScriptSerializer.Modules.AI
       public override Dictionary<string, Type> SectionTypes { get; } = new()
       {
          {nameof(CreateAIModel), typeof(CreateAIModel)},
+         {nameof(CreateAIDefines), typeof(CreateAIDefines) },
       };
    }
 }

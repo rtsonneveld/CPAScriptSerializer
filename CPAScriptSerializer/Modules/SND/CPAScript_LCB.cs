@@ -4,6 +4,9 @@ using CPAScriptSerializer.Modules.SND.Sections.LCB;
 
 namespace CPAScriptSerializer.Modules.SND
 {
+   /// <summary>
+   /// Level (CPA) Sound Bank
+   /// </summary>
    public class CPAScript_LCB : CPAScript
    {
       public override Dictionary<string, Type> SectionTypes { get; } = new()

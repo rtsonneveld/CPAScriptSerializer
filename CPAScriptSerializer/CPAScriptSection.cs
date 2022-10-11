@@ -30,7 +30,7 @@ namespace CPAScriptSerializer
       /// <summary>
       /// In case the command type can't be found, it's possible to provide a default fallback
       /// </summary>
-      public abstract Type CommandTypeFallback(string name);
+      public virtual Type CommandTypeFallback(string name) => null;
 
       public List<CPAScriptItem> Items;
       public string Format;

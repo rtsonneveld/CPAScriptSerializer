@@ -4,9 +4,10 @@ using System.Text;
 using CPAScriptSerializer.Commands;
 
 namespace CPAScriptSerializer.Modules.GAM.Commands.CHL {
+
+   [UnusedByCPA]
    public class VersionNumber : Command
    {
-      [UnusedByCPA]
       [CommandParameter(0)] public int Version;
    }
 }

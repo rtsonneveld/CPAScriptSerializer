@@ -14,10 +14,11 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.CAR {
          {nameof(CollSet), typeof(CollSet)},
          {nameof(Dynam), typeof(Dynam)},
          {nameof(MSWay), typeof(MSWay)},
+         {nameof(MSSound), typeof(MSSound)},
          {nameof(SectInfo), typeof(SectInfo)},
          {nameof(StandardGame), typeof(StandardGame)},
       };
 
-      public override Type CommandTypeFallback(string name) => null;
+      
    }
 }

@@ -7,8 +7,6 @@ namespace CPAScriptSerializer.Modules.AI.Enums {
    
    public enum EnumProcedure {
 
-      // Proc
-
       Proc_SetHitPoints,
       Proc_SetHitPointsInit,
       Proc_SetHitPointsToInit,
@@ -182,10 +180,10 @@ namespace CPAScriptSerializer.Modules.AI.Enums {
       Proc_HUD_SetEnemyHealthGauge,
       Proc_DoCheatMenu,
       Proc_SetBacklight,
-      PROC_BeginAnalogCalibration,
+      Proc_BeginAnalogCalibration,
       Proc_EndAnalogCalibration,
 
-      // Proc1
+#region Proc1
 
       Proc_OptionChangeDetailsValue,
       Proc_OptionChangeMusicVolume,
@@ -409,7 +407,9 @@ namespace CPAScriptSerializer.Modules.AI.Enums {
       Proc_ForceVerticalUsingX,
       Proc_ForceVerticalUsingY,
 
-      // ProcRay2
+#endregion
+
+#region ProcRay2
       Proc_FixePointsDeMagie,
       Proc_FixePointsDeMagieMax,
       Proc_InitPointsDeMagie,
@@ -484,8 +484,9 @@ namespace CPAScriptSerializer.Modules.AI.Enums {
       Proc_SaveSinusContext,
       Proc_RestoreSinusContext,
       Func_TextSuperImposed,
+      #endregion
 
-      // ProcCam
+#region ProcCam
       Proc_Cam_UpdatePosition,
       Proc_Cam_ChangeShiftTarget,
       Proc_Cam_ChangeShiftPos,
@@ -544,6 +545,16 @@ namespace CPAScriptSerializer.Modules.AI.Enums {
       Proc_Cam_ForceBestPos,
       Proc_Cam_ForceNormalState,
       Proc_Cam_ForceMovingOnRail,
-      Proc_Cam_SetCameraModeForEngine
+      Proc_Cam_SetCameraModeForEngine,
+      #endregion
+
+      #region DONALD (not present in R4DS)
+
+      Proc_SetLensFlare, // Found in RAC_LensFlare.rul
+      Proc_FixePositionMirror, // Found in RAC_Mirroir.rul
+      Proc_FullWhite,
+
+      #endregion
+
    }
 }
