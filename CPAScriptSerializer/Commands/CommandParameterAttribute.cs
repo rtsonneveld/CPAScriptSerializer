@@ -7,10 +7,15 @@ namespace CPAScriptSerializer.Commands
    public class CommandParameterAttribute : Attribute
    {
       public int Index { get; set; }
+      /// <summary>
+      /// Set this string to a non-null value to make the parser  interpret the specified value as "default" - it will also be exported in that way.
+      /// </summary>
+      public string CustomDefaultValue = null;
 
-      public CommandParameterAttribute(int index)
+      public CommandParameterAttribute(int index, string customDefaultValue = null)
       {
          Index = index;
+         CustomDefaultValue = customDefaultValue;
       }
    }
 }

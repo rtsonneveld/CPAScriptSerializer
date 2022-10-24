@@ -29,6 +29,11 @@ namespace CPAScriptSerializer.Modules.GAM {
          {nameof(MSSound), typeof(MSSound)},
          {nameof(SectInfo), typeof(SectInfo)},
          {nameof(StandardGame), typeof(StandardGame)},
+         {nameof(MSTakPut), typeof(MSTakPut)},
+         {nameof(World), typeof(World)},
+         {nameof(Cineinfo), typeof(Cineinfo)},
+         {nameof(Micro), typeof(Micro)},
+         {nameof(MSLight), typeof(MSLight)},
 
          #endregion
 

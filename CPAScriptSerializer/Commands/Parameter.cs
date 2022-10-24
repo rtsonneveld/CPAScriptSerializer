@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using CPAScriptSerializer.Modules.AI.Commands.RULRFX.Nodes;
 using CPAScriptSerializer.Modules.AI.Enums;
+using CPAScriptSerializer.Modules.Editor.OAC.Enums;
 using CPAScriptSerializer.Modules.GAM.Enums;
 using CPAScriptSerializer.Modules.GLI.Enums;
 using CPAScriptSerializer.Modules.IPT.Enums;
 using CPAScriptSerializer.Modules.SND.Enums;
+using EnumLightType = CPAScriptSerializer.Modules.GAM.Enums.EnumLightType;
 
 namespace CPAScriptSerializer.Commands
 {
@@ -34,8 +37,14 @@ namespace CPAScriptSerializer.Commands
 
                   object? fieldValue = null;
 
-                  if (field.FieldType.IsGenericType && field.FieldType.GetGenericTypeDefinition() == typeof(CPAScriptReference<>)) {
+                  if (fieldSettings.CustomDefaultValue != null && parameters[fieldSettings.Index].Value == fieldSettings.CustomDefaultValue) {
 
+                     // First check for a custom default value
+                     fieldValue = field.FieldType.IsValueType ? Activator.CreateInstance(field.FieldType) : null;
+
+                  }  else if (field.FieldType.IsGenericType && field.FieldType.GetGenericTypeDefinition() == typeof(CPAScriptReference<>)) {
+
+                     // Then handle cpa script reference types
                      Type myParameterizedSomeClass = typeof(CPAScriptReference<>).MakeGenericType(field.FieldType.GetGenericArguments()[0]);
                      ConstructorInfo constr = myParameterizedSomeClass.GetConstructor(new Type[] { typeof(string) });
                      fieldValue = constr?.Invoke(new object[] { parameters[fieldSettings.Index].Value });
@@ -69,14 +78,7 @@ namespace CPAScriptSerializer.Commands
       public static implicit operator sbyte(Parameter p) => sbyte.Parse(p.Value);
 
       public static implicit operator int(Parameter p) => int.Parse(p.Value);
-      public static implicit operator uint(Parameter p)
-      {
-         if (p.Value == "CapaNull") // TODO: Maybe make this less hardcoded
-         {
-            return 0;
-         }
-         return uint.Parse(p.Value);
-      }
+      public static implicit operator uint(Parameter p) => uint.Parse(p.Value);
 
       public static implicit operator short(Parameter p) => short.Parse(p.Value);
       public static implicit operator ushort(Parameter p) => ushort.Parse(p.Value);
@@ -127,71 +129,87 @@ namespace CPAScriptSerializer.Commands
 
       #region AI
 
-      public static implicit operator EnumCondition(Parameter p) => Enum.Parse<EnumCondition>(p.Value, true);
-      public static implicit operator EnumDsgVarSaveType(Parameter p) => Enum.Parse<EnumDsgVarSaveType>(p.Value, true);
-      public static implicit operator EnumDsgVarInitType(Parameter p) => Enum.Parse<EnumDsgVarInitType>(p.Value, true);
-      public static implicit operator EnumField(Parameter p) => Enum.Parse<EnumField>(p.Value, true);
-      public static implicit operator EnumFunction(Parameter p) => Enum.Parse<EnumFunction>(p.Value, true);
-      public static implicit operator EnumKeyWord(Parameter p) => Enum.Parse<EnumKeyWord>(p.Value, true);
-      public static implicit operator EnumMetaAction(Parameter p) => Enum.Parse<EnumMetaAction>(p.Value, true);
+      public static implicit operator EnumCondition(Parameter p) => ParseEnumParam<EnumCondition>(p.Value);
+      public static implicit operator EnumDsgVarSaveType(Parameter p) => ParseEnumParam<EnumDsgVarSaveType>(p.Value);
+      public static implicit operator EnumDsgVarInitType(Parameter p) => ParseEnumParam<EnumDsgVarInitType>(p.Value);
+      public static implicit operator EnumField(Parameter p) => ParseEnumParam<EnumField>(p.Value);
+      public static implicit operator EnumFunction(Parameter p) => ParseEnumParam<EnumFunction>(p.Value);
+      public static implicit operator EnumKeyWord(Parameter p) => ParseEnumParam<EnumKeyWord>(p.Value);
+      public static implicit operator EnumMetaAction(Parameter p) => ParseEnumParam<EnumMetaAction>(p.Value);
       public static implicit operator EnumOperator(Parameter p) => EnumOperatorUtils.Parse(p.Value);
-      public static implicit operator EnumProcedure(Parameter p) => Enum.Parse<EnumProcedure>(p.Value, true);
+      public static implicit operator EnumProcedure(Parameter p) => ParseEnumParam<EnumProcedure>(p.Value);
 
       #endregion
 
       #region IPT
 
-      public static implicit operator EnumJoyPadAxe(Parameter p) => Enum.Parse<EnumJoyPadAxe>(p.Value, true);
-      public static implicit operator EnumJoyPadButton(Parameter p) => Enum.Parse<EnumJoyPadButton>(p.Value, true);
-      public static implicit operator EnumRefType(Parameter p) => Enum.Parse<EnumRefType>(p.Value, true);
+      public static implicit operator EnumJoyPadAxe(Parameter p) => ParseEnumParam<EnumJoyPadAxe>(p.Value);
+      public static implicit operator EnumJoyPadButton(Parameter p) => ParseEnumParam<EnumJoyPadButton>(p.Value);
+      public static implicit operator EnumRefType(Parameter p) => ParseEnumParam<EnumRefType>(p.Value);
 
       #endregion
 
       #region SND
 
-      public static implicit operator EnumStorageType(Parameter p) => Enum.Parse<EnumStorageType>(p.Value, true);
-      public static implicit operator EnumResourceType(Parameter p) => Enum.Parse<EnumResourceType>(p.Value, true);
-      public static implicit operator EnumZipFormat(Parameter p) => Enum.Parse<EnumZipFormat>(p.Value, true);
-      public static implicit operator EnumEventType(Parameter p) => Enum.Parse<EnumEventType>(p.Value, true);
+      public static implicit operator EnumStorageType(Parameter p) => ParseEnumParam<EnumStorageType>(p.Value);
+      public static implicit operator EnumResourceType(Parameter p) => ParseEnumParam<EnumResourceType>(p.Value);
+      public static implicit operator EnumZipFormat(Parameter p) => ParseEnumParam<EnumZipFormat>(p.Value);
+      public static implicit operator EnumEventType(Parameter p) => ParseEnumParam<EnumEventType>(p.Value);
 
       #endregion
 
       #region GAM
-      public static implicit operator EnumTransitionStatusFlag(Parameter p) => Enum.Parse<EnumTransitionStatusFlag>(p.Value, true);
-      public static implicit operator EnumInitFlags(Parameter p) => Enum.Parse<EnumInitFlags>(p.Value, true);
-      public static implicit operator EnumDynamSize(Parameter p) => Enum.Parse<EnumDynamSize>(p.Value, true);
-      public static implicit operator EnumGenericEventType(Parameter p) => Enum.Parse<EnumGenericEventType>(p.Value, true);
-      public static implicit operator EnumObjectType(Parameter p) => Enum.Parse<EnumObjectType>(p.Value, true);
+      public static implicit operator EnumTransitionStatusFlag(Parameter p) => ParseEnumParam<EnumTransitionStatusFlag>(p.Value);
+      public static implicit operator EnumInitFlags(Parameter p) => ParseEnumParam<EnumInitFlags>(p.Value);
+      public static implicit operator EnumDynamSize(Parameter p) => ParseEnumParam<EnumDynamSize>(p.Value);
+      public static implicit operator EnumGenericEventType(Parameter p) => ParseEnumParam<EnumGenericEventType>(p.Value);
+      public static implicit operator EnumObjectType(Parameter p) => ParseEnumParam<EnumObjectType>(p.Value);
+      public static implicit operator EnumLightType(Parameter p) => ParseEnumParam<EnumLightType>(p.Value);
       #endregion
 
       #region GLI
 
-      public static implicit operator EnumElementType(Parameter p) => Enum.Parse<EnumElementType>(p.Value, true);
-      public static implicit operator EnumMaterialType(Parameter p) => Enum.Parse<EnumMaterialType>(p.Value, true);
-      public static implicit operator EnumChromaKeyEnabled(Parameter p) => Enum.Parse<EnumChromaKeyEnabled>(p.Value, true);
-      public static implicit operator EnumChromaKeyFilter(Parameter p) => Enum.Parse<EnumChromaKeyFilter>(p.Value, true);
-      public static implicit operator EnumPriority(Parameter p) => Enum.Parse<EnumPriority>(p.Value, true);
-      public static implicit operator EnumQuality(Parameter p) => Enum.Parse<EnumQuality>(p.Value, true);
-      public static implicit operator CPAScriptSerializer.Modules.GMT.Enums.EnumOnOffToggle(Parameter p) => Enum.Parse<CPAScriptSerializer.Modules.GMT.Enums.EnumOnOffToggle>(p.Value, true);
+      public static implicit operator EnumElementType(Parameter p) => ParseEnumParam<EnumElementType>(p.Value);
+      public static implicit operator EnumMaterialType(Parameter p) => ParseEnumParam<EnumMaterialType>(p.Value);
+      public static implicit operator EnumChromaKeyEnabled(Parameter p) => ParseEnumParam<EnumChromaKeyEnabled>(p.Value);
+      public static implicit operator EnumChromaKeyFilter(Parameter p) => ParseEnumParam<EnumChromaKeyFilter>(p.Value);
+      public static implicit operator EnumPriority(Parameter p) => ParseEnumParam<EnumPriority>(p.Value);
+      public static implicit operator EnumQuality(Parameter p) => ParseEnumParam<EnumQuality>(p.Value);
+      public static implicit operator Modules.GMT.Enums.EnumOnOffToggle(Parameter p) => ParseEnumParam<Modules.GMT.Enums.EnumOnOffToggle>(p.Value);
 
       #endregion
 
       #region GMT
 
-      public static implicit operator CPAScriptSerializer.Modules.GLI.Enums.EnumOnOffToggle(Parameter p) => Enum.Parse<CPAScriptSerializer.Modules.GLI.Enums.EnumOnOffToggle>(p.Value, true);
+      public static implicit operator Modules.GLI.Enums.EnumOnOffToggle(Parameter p) => ParseEnumParam<Modules.GLI.Enums.EnumOnOffToggle>(p.Value);
 
       #endregion
 
       #region TGM
 
-      public static implicit operator CPAScriptSerializer.Modules.Editor.TGM.Enums.EnumZoneType(Parameter p) => Enum.Parse<CPAScriptSerializer.Modules.Editor.TGM.Enums.EnumZoneType>(p.Value, true);
+      public static implicit operator Modules.Editor.TGM.Enums.EnumZoneType(Parameter p) => ParseEnumParam<Modules.Editor.TGM.Enums.EnumZoneType>(p.Value);
 
       #endregion
 
 
       #region TIA
 
-      public static implicit operator CPAScriptSerializer.Modules.Editor.TIA.Enums.EnumLanguage(Parameter p) => Enum.Parse<CPAScriptSerializer.Modules.Editor.TIA.Enums.EnumLanguage>(p.Value, true);
+      public static implicit operator Modules.Editor.TIA.Enums.EnumLanguage(Parameter p) => ParseEnumParam<Modules.Editor.TIA.Enums.EnumLanguage>(p.Value);
+
+      #endregion
+
+      #region OAC
+
+      // Spaces = Underscore
+      public static implicit operator Modules.Editor.OAC.Enums.EnumAllocation(Parameter p) => ParseEnumParam<Modules.Editor.OAC.Enums.EnumAllocation>(p.Value);
+      public static implicit operator Modules.Editor.OAC.Enums.EnumCollisionFlags(Parameter p) => ParseEnumParam<Modules.Editor.OAC.Enums.EnumCollisionFlags>(p.Value);
+      public static implicit operator Modules.Editor.OAC.Enums.EnumGroup(Parameter p) => ParseEnumParam<Modules.Editor.OAC.Enums.EnumGroup>(p.Value);
+      public static implicit operator Modules.Editor.OAC.Enums.EnumLightType(Parameter p) => ParseEnumParam<Modules.Editor.OAC.Enums.EnumLightType>(p.Value);
+      public static implicit operator Modules.Editor.OAC.Enums.EnumLinkedState(Parameter p) => ParseEnumParam<Modules.Editor.OAC.Enums.EnumLinkedState>(p.Value, true);
+      public static implicit operator Modules.Editor.OAC.Enums.EnumModelType(Parameter p) => ParseEnumParam<Modules.Editor.OAC.Enums.EnumModelType>(p.Value);
+      public static implicit operator Modules.Editor.OAC.Enums.EnumObjectinitInit(Parameter p) => ParseEnumParam<Modules.Editor.OAC.Enums.EnumObjectinitInit>(p.Value);
+      public static implicit operator Modules.Editor.OAC.Enums.EnumPlatformType(Parameter p) => ParseEnumParam<Modules.Editor.OAC.Enums.EnumPlatformType>(p.Value);
+      public static implicit operator Modules.Editor.OAC.Enums.EnumShadowQuality(Parameter p) => ParseEnumParam<Modules.Editor.OAC.Enums.EnumShadowQuality>(p.Value);
 
       #endregion
 
@@ -199,6 +217,10 @@ namespace CPAScriptSerializer.Commands
 
       public static string ExportValue(object? value, CommandParameterAttribute fieldSettings)
       {
+         if (value == default && fieldSettings.CustomDefaultValue != null) {
+            return fieldSettings.CustomDefaultValue;
+         }
+
          if (value == null) {
             throw new Exception("Value was null");
          }
@@ -212,6 +234,10 @@ namespace CPAScriptSerializer.Commands
          if (value.GetType().IsGenericType && value.GetType().GetGenericTypeDefinition() == typeof(CPAScriptReference<>)) {
             return '"' + valueString + '"';
          }
+         
+         if (value.GetType().GetCustomAttributes<UseUnderscoresAsSpacesEnumAttribute>().Any()) {
+            return valueString.Replace("_", " ");
+         }
 
          return value switch
          {
@@ -221,6 +247,16 @@ namespace CPAScriptSerializer.Commands
             _ => valueString
          };
 
+      }
+
+      public static T ParseEnumParam<T>(Parameter p, bool ignoreCase = true) where T: struct,Enum
+      {
+         string str = p.Value;
+         if (typeof(T).GetCustomAttributes<UseUnderscoresAsSpacesEnumAttribute>().Any()) {
+            str = str.Replace(" ", "_");
+         }
+
+         return Enum.Parse<T>(str, ignoreCase);
       }
    }
 }

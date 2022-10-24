@@ -15,6 +15,8 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.CAR.Character_ {
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {
+         { nameof(DynamicsType), typeof(DynamicsType) },
+         { nameof(TakeCareOfTheEnvironment), typeof(TakeCareOfTheEnvironment) },
          { nameof(SlideFactorX), typeof(SlideFactorX) },
          { nameof(SlideFactorY), typeof(SlideFactorY) },
          { nameof(SlideFactorZ), typeof(SlideFactorZ) },

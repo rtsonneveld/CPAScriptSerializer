@@ -15,6 +15,7 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.CAR.Character_ {
          { nameof(ShadowScale), typeof(ShadowScale) },
          { nameof(ShadowQuality), typeof(ShadowQuality) },
          { nameof(ShadowHeight), typeof(ShadowHeight) },
+         { nameof(ShadowMaterial), typeof(ShadowMaterial) },
          { nameof(LightComputationFrequency), typeof(LightComputationFrequency) },
          { nameof(BrainComputationFrequency), typeof(BrainComputationFrequency) },
       };

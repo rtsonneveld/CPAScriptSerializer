@@ -19,6 +19,8 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.CAR.Character_ {
          { nameof(Capabilities), typeof(Capabilities) },
          { nameof(TransparencyZone), typeof(TransparencyZone) },
          { nameof(TooFarLimit), typeof(TooFarLimit) },
+         { nameof(SpecialPositionFlag), typeof(SpecialPositionFlag) },
+         { nameof(LinkedToSector), typeof(LinkedToSector) },
       };
 
       

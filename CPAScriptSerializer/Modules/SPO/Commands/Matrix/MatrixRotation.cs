@@ -6,14 +6,16 @@ using CPAScriptSerializer.Commands;
 namespace CPAScriptSerializer.Modules.SPO.Commands.Matrix {
    public class MatrixRotation : Command
    {
-      [CommandParameter(0)] public float Matrix0;
-      [CommandParameter(1)] public float Matrix1;
-      [CommandParameter(2)] public float Matrix2;
-      [CommandParameter(3)] public float Matrix3;
-      [CommandParameter(4)] public float Matrix4;
-      [CommandParameter(5)] public float Matrix5;
-      [CommandParameter(6)] public float Matrix6;
-      [CommandParameter(7)] public float Matrix7;
-      [CommandParameter(8)] public float Matrix8;
+      [CommandParameter(0)] public float Col0X;
+      [CommandParameter(1)] public float Col0Y;
+      [CommandParameter(2)] public float Col0Z;
+
+      [CommandParameter(3)] public float Col1X;
+      [CommandParameter(4)] public float Col1Y;
+      [CommandParameter(5)] public float Col1Z;
+
+      [CommandParameter(6)] public float Col2X;
+      [CommandParameter(7)] public float Col2Y;
+      [CommandParameter(8)] public float Col2Z;
    }
 }

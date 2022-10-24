@@ -5,13 +5,11 @@ using System.Text;
 namespace CPAScriptSerializer.Modules.GAM.Enums {
    public enum EnumInitFlags {
       WhenPlayerGoOutOfActionZone = 0,
+      NeverBack,
       Always,
-      WhenPlayerIsDead,
-      WhenMapJustLoaded,
-      WhenSavedGameJustLoaded,
-      NeverBackWhenTaken,
-      NumberOfObjectInit,
-      WhenGeneratorIsDesactivated,
-      WhenGoOutOfZone
+      WhenGoOutOfZone,
+      WhenPlayerDead,
+      WhenMapLoaded,
+      WhenSavedGameLoaded,
    }
 }

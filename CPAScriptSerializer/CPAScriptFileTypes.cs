@@ -88,6 +88,9 @@ namespace CPAScriptSerializer {
          { "bdv", typeof(Modules.Editor.OZO.CPAScript_BDV)},
          { "zoo", typeof(Modules.Editor.OZO.CPAScript_ZOO)},
          { "zdx", typeof(Modules.Editor.OZO.CPAScript_ZDX)},
+
+         // Module oAC
+         { "ema", typeof(Modules.Editor.OAC.CPAScript_EMA)},
       };
 
       public static CPAScript ReadFile(string path)
