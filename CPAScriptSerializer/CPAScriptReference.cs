@@ -17,7 +17,7 @@ namespace CPAScriptSerializer {
 
          string filePath = splitParts[0]; // rayman\YLT_RaymanModel\YLT_RaymanModel.rul
 
-         string[] secondPart = splitParts[1].Split(":"); // CreateIntelligence^CreateComport:KWN_Pousser_Attente
+         string[] secondPart = (splitParts.Length > 1 ? splitParts[1] : splitParts[0]).Split(":"); // CreateIntelligence^CreateComport:KWN_Pousser_Attente
 
          string pathToSection = secondPart[0]; // // secondPart = CreateIntelligence^CreateComport:KWN_Pousser_Attente
 

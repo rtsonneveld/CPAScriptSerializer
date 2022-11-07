@@ -17,6 +17,7 @@ namespace CPAScriptSerializer.Modules.Editor.OZO {
          {nameof(ElementIndexedTriangles), typeof(ElementIndexedTriangles)}, // Not sure if this is ever used but just in case
          {nameof(ElementSpheres), typeof(ElementSpheres)},
          {nameof(ElementAlignedBoxes), typeof(ElementAlignedBoxes)},
+         {nameof(ElementCones), typeof(ElementCones)},
       };
    }
 }

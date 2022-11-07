@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using CPAScriptSerializer.Commands;
+using CPAScriptSerializer.Commands.Generic;
 
-namespace CPAScriptSerializer {
-   
+namespace CPAScriptSerializer
+{
+
    /// <summary>
    /// Generic section that can be used if the section and its contents are not important and can be ignored
    /// </summary>
@@ -13,6 +14,6 @@ namespace CPAScriptSerializer {
       public DummySection(string sectionId) : base(sectionId) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new() { };
-      public override Type CommandTypeFallback(string name) => typeof(DummyCommand);
+      public override Type CommandTypeFallback(string name) => typeof(EmptyCommand);
    }
 }

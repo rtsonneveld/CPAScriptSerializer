@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CPAScriptSerializer.Modules.Editor.OAC.Enums {
 
-   [UseUnderscoresAsSpacesEnum]
+   [ReplaceUnderscoresEnum]
    public enum EnumObjectinitInit {
       Always,
       Out_Of_Action_Zone,

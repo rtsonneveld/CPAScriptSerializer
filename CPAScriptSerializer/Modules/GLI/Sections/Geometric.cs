@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CPAScriptSerializer.Commands;
+using CPAScriptSerializer.Commands.Generic;
 using CPAScriptSerializer.Modules.GLI.Commands;
 using CPAScriptSerializer.Modules.GLI.Commands.Geometric;
 
@@ -23,8 +25,10 @@ namespace CPAScriptSerializer.Modules.GLI.Sections {
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {
+         { nameof(LookAt), typeof(LookAt) },
          { nameof(AddVertex), typeof(AddVertex) },
          { nameof(AddElement), typeof(AddElement) },
+         { "Comment", typeof(EmptyCommand) }, // Ignore these comments
       };
 
       

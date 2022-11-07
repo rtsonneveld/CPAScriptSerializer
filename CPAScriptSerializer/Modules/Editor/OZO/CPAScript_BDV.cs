@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using CPAScriptSerializer.Modules.Editor.OZO.Sections;
+using CPAScriptSerializer.Modules.GLI.Commands.Texture;
 using CPAScriptSerializer.Modules.GLI.Sections;
 
 namespace CPAScriptSerializer.Modules.Editor.OZO {

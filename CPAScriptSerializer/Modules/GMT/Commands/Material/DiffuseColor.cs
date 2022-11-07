@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using CPAScriptSerializer.Commands;
+using CPAScriptSerializer.Commands.Generic;
 
 namespace CPAScriptSerializer.Modules.GMT.Commands.Material {
-   public class DiffuseColor : Command {
-      [CommandParameter(0)] public float ColorRed;
-      [CommandParameter(1)] public float ColorGreen;
-      [CommandParameter(2)] public float ColorBlue;
-   }
+   public class DiffuseColor : Color3fCommand { }
 }

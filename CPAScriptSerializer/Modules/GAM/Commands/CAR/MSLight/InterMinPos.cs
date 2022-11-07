@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using CPAScriptSerializer.Commands;
+using CPAScriptSerializer.Commands.Generic;
 
 namespace CPAScriptSerializer.Modules.GAM.Commands.CAR.MSLight {
-   public class InterMinPos : Command
-   {
-      [CommandParameter(0)] public float X;
-      [CommandParameter(1)] public float Y;
-      [CommandParameter(2)] public float Z;
-   }
+   public class InterMinPos : Vector3Command { }
 }

@@ -11,6 +11,7 @@ namespace CPAScriptSerializer.Modules.IPT.Sections {
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {
          { nameof(Keyboard), typeof(Keyboard) },
+         { "KeyBoard", typeof(Keyboard) },
          { nameof(Pad), typeof(Pad) },
          { nameof(Joystick), typeof(Joystick) },
       };

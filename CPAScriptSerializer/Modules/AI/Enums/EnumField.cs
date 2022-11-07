@@ -14,6 +14,8 @@ namespace CPAScriptSerializer.Modules.AI.Enums {
       PrevComportIntell,
       PrevComportReflex,
       ShadowScaleX,
-      ShadowScaleY
+      ShadowScaleY,
+      // OLD:
+      SightAxis,
    }
 }

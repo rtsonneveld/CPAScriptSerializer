@@ -145,7 +145,7 @@ namespace CPAScriptSerializer.Commands
 
       public static implicit operator EnumJoyPadAxe(Parameter p) => ParseEnumParam<EnumJoyPadAxe>(p.Value);
       public static implicit operator EnumJoyPadButton(Parameter p) => ParseEnumParam<EnumJoyPadButton>(p.Value);
-      public static implicit operator EnumRefType(Parameter p) => ParseEnumParam<EnumRefType>(p.Value);
+      public static implicit operator EnumRefType(Parameter p) => ParseEnumParam<EnumRefType>(p.Value.Replace("ForAllVersions", "ForAllVersion")); // Stupid typo D:
 
       #endregion
 
@@ -155,6 +155,7 @@ namespace CPAScriptSerializer.Commands
       public static implicit operator EnumResourceType(Parameter p) => ParseEnumParam<EnumResourceType>(p.Value);
       public static implicit operator EnumZipFormat(Parameter p) => ParseEnumParam<EnumZipFormat>(p.Value);
       public static implicit operator EnumEventType(Parameter p) => ParseEnumParam<EnumEventType>(p.Value);
+      public static implicit operator EnumTransitionType(Parameter p) => ParseEnumParam<EnumTransitionType>(p.Value);
 
       #endregion
 
@@ -165,16 +166,21 @@ namespace CPAScriptSerializer.Commands
       public static implicit operator EnumGenericEventType(Parameter p) => ParseEnumParam<EnumGenericEventType>(p.Value);
       public static implicit operator EnumObjectType(Parameter p) => ParseEnumParam<EnumObjectType>(p.Value);
       public static implicit operator EnumLightType(Parameter p) => ParseEnumParam<EnumLightType>(p.Value);
+      public static implicit operator EnumLoadMode(Parameter p) => ParseEnumParam<EnumLoadMode>(p.Value);
+      public static implicit operator Modules.GAM.Enums.EnumOnOffToggle(Parameter p) => ParseEnumParam<Modules.GAM.Enums.EnumOnOffToggle>(p.Value);
       #endregion
 
       #region GLI
 
       public static implicit operator EnumElementType(Parameter p) => ParseEnumParam<EnumElementType>(p.Value);
       public static implicit operator EnumMaterialType(Parameter p) => ParseEnumParam<EnumMaterialType>(p.Value);
+      public static implicit operator EnumObjectLighted(Parameter p) => ParseEnumParam<EnumObjectLighted>(p.Value);
       public static implicit operator EnumChromaKeyEnabled(Parameter p) => ParseEnumParam<EnumChromaKeyEnabled>(p.Value);
       public static implicit operator EnumChromaKeyFilter(Parameter p) => ParseEnumParam<EnumChromaKeyFilter>(p.Value);
+      public static implicit operator EnumMipMapping(Parameter p) => ParseEnumParam<EnumMipMapping>(p.Value);
       public static implicit operator EnumPriority(Parameter p) => ParseEnumParam<EnumPriority>(p.Value);
       public static implicit operator EnumQuality(Parameter p) => ParseEnumParam<EnumQuality>(p.Value);
+      public static implicit operator EnumSpriteMode(Parameter p) => ParseEnumParam<EnumSpriteMode>(p.Value);
       public static implicit operator Modules.GMT.Enums.EnumOnOffToggle(Parameter p) => ParseEnumParam<Modules.GMT.Enums.EnumOnOffToggle>(p.Value);
 
       #endregion
@@ -210,6 +216,8 @@ namespace CPAScriptSerializer.Commands
       public static implicit operator Modules.Editor.OAC.Enums.EnumObjectinitInit(Parameter p) => ParseEnumParam<Modules.Editor.OAC.Enums.EnumObjectinitInit>(p.Value);
       public static implicit operator Modules.Editor.OAC.Enums.EnumPlatformType(Parameter p) => ParseEnumParam<Modules.Editor.OAC.Enums.EnumPlatformType>(p.Value);
       public static implicit operator Modules.Editor.OAC.Enums.EnumShadowQuality(Parameter p) => ParseEnumParam<Modules.Editor.OAC.Enums.EnumShadowQuality>(p.Value);
+      public static implicit operator Modules.Editor.OAC.Enums.EnumShareMode(Parameter p) => ParseEnumParam<Modules.Editor.OAC.Enums.EnumShareMode>(p.Value);
+      public static implicit operator Modules.Editor.OAC.Enums.EnumNameListType(Parameter p) => ParseEnumParam<Modules.Editor.OAC.Enums.EnumNameListType>(p.Value);
 
       #endregion
 
@@ -234,9 +242,13 @@ namespace CPAScriptSerializer.Commands
          if (value.GetType().IsGenericType && value.GetType().GetGenericTypeDefinition() == typeof(CPAScriptReference<>)) {
             return '"' + valueString + '"';
          }
-         
-         if (value.GetType().GetCustomAttributes<UseUnderscoresAsSpacesEnumAttribute>().Any()) {
-            return valueString.Replace("_", " ");
+
+         if (value.GetType().GetCustomAttributes<SerializeEnumAsValueAttribute>().Any()) {
+            return ((int)value).ToString();
+         }
+
+         if (value.GetType().GetCustomAttributes<ReplaceUnderscoresEnumAttribute>().FirstOrDefault() is { } attribute) {
+            return valueString.Replace("_", attribute.ReplacementString);
          }
 
          return value switch
@@ -252,8 +264,17 @@ namespace CPAScriptSerializer.Commands
       public static T ParseEnumParam<T>(Parameter p, bool ignoreCase = true) where T: struct,Enum
       {
          string str = p.Value;
-         if (typeof(T).GetCustomAttributes<UseUnderscoresAsSpacesEnumAttribute>().Any()) {
-            str = str.Replace(" ", "_");
+
+         if (typeof(T).GetCustomAttributes<SerializeEnumAsValueAttribute>().Any()) {
+            return (T)Enum.ToObject(typeof(T), int.Parse(p.Value));
+         }
+
+         if (typeof(T).GetCustomAttributes<ReplaceUnderscoresEnumAttribute>().FirstOrDefault() is { } attribute) {
+            if (string.IsNullOrEmpty(attribute.ReplacementString)) {
+               str = "_" + str;
+            } else {
+               str = str.Replace(attribute.ReplacementString, "_");
+            }
          }
 
          return Enum.Parse<T>(str, ignoreCase);

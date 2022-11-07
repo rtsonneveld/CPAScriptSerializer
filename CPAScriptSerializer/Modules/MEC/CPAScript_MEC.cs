@@ -9,6 +9,7 @@ namespace CPAScriptSerializer.Modules.MEC {
       public override Dictionary<string, Type> SectionTypes { get; } = new Dictionary<string, Type>()
       {
          { nameof(IdCardBase), typeof(IdCardBase) },
+         { nameof(IdCardCamera), typeof(IdCardCamera) },
       };
    }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CPAScriptSerializer.Modules.Editor.OAC.Enums {
    [UnusedByCPA]
-   [UseUnderscoresAsSpacesEnum]
+   [ReplaceUnderscoresEnum]
    public enum EnumCollisionFlags {
       Only_with_Map,
       Map_and_Actors

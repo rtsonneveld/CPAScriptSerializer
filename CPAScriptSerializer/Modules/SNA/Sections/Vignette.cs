@@ -10,6 +10,7 @@ namespace CPAScriptSerializer.Modules.SNA.Sections {
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {
          {nameof(LoadLevelVignette), typeof(LoadLevelVignette)},
+         {nameof(LoadVignette), typeof(LoadVignette)},
          {nameof(InitBarOutlineColor), typeof(InitBarOutlineColor)},
          {nameof(InitBarInsideColor), typeof(InitBarInsideColor)},
          {nameof(InitBarColor), typeof(InitBarColor)},

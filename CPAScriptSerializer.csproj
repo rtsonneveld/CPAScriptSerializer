@@ -8,9 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="TestFiles\**" />
+    <EmbeddedResource Remove="TestFiles\**" />
+    <None Remove="TestFiles\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="CPAScriptSerializer\Modules\GAM\Commands\CAR\Brain\" />
     <Folder Include="CPAScriptSerializer\Modules\SNA\Enums\" />
-    <Folder Include="TestFiles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
 </Project>

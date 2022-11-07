@@ -14,6 +14,8 @@ namespace CPAScriptSerializer.Modules.GLI.Sections {
          { nameof(LoadTexture), typeof(LoadTexture) },
          { nameof(Tiling), typeof(Tiling) },
          { nameof(MipMapping), typeof(MipMapping) },
+         { "Mipmapping", typeof(MipMapping) }, // Case variation - I should make these case insensitive sometime maybe
+         { nameof(Bilinear), typeof(Bilinear) },
          { nameof(Chromakey), typeof(Chromakey) },
          { nameof(Quality), typeof(Quality) },
          { nameof(Priority), typeof(Priority) },

@@ -1,5 +1,5 @@
 ﻿namespace CPAScriptSerializer.Modules.Editor.OAC.Enums {
-   [UseUnderscoresAsSpacesEnum]
+   [ReplaceUnderscoresEnum]
    public enum EnumLightType {
       Parallel,
       Spherical,

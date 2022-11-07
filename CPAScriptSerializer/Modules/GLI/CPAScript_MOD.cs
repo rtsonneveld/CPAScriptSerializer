@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using CPAScriptSerializer.Modules.GLI.Commands.Texture;
 using CPAScriptSerializer.Modules.GLI.Sections;
+using CPAScriptSerializer.Modules.GMT.Sections;
 using CPAScriptSerializer.Modules.SPO.Sections;
 
 namespace CPAScriptSerializer.Modules.GLI {
@@ -32,6 +34,12 @@ namespace CPAScriptSerializer.Modules.GLI {
          { nameof(ElementIndexedTriangles), typeof(ElementIndexedTriangles) },
          { nameof(ElementSpheres), typeof(ElementSpheres) },
          { nameof(ElementAlignedBoxes), typeof(ElementAlignedBoxes) },
+         { nameof(ElementSprites), typeof(ElementSprites) },
+         { nameof(Sprite), typeof(Sprite) },
+         // WP.mod only?
+         { nameof(GameMaterial), typeof(GameMaterial) },
+         { nameof(Material), typeof(Material) },
+         { nameof(Texture), typeof(Texture) },
       };
    }
 }

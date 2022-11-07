@@ -16,6 +16,8 @@ namespace CPAScriptSerializer.Modules.SND.Sections.CSB
       {
          { nameof(SndResourceDisk), typeof(SndResourceDisk) },
          { nameof(SndRandomListM), typeof(SndRandomListM) },
+         { nameof(SndThemePartListM), typeof(SndThemePartListM) },
+         { nameof(SndThemePartOutroM), typeof(SndThemePartOutroM) },
       };
 
       

@@ -17,6 +17,10 @@ namespace CPAScriptSerializer.Modules.SND.Sections.CSB
          { nameof(SetName), typeof(SetName) },
          { nameof(SetComment), typeof(SetComment) },
          { nameof(SndRandomListE), typeof(SndRandomListE) },
+         { nameof(SndThemePartListE), typeof(SndThemePartListE) },
+         { nameof(SndTrackListE), typeof(SndTrackListE) },
+         { nameof(ResPlugInData), typeof(ResPlugInData)},
+         { nameof(SndThemePartOutroE), typeof(SndThemePartOutroE)},
       };
 
       

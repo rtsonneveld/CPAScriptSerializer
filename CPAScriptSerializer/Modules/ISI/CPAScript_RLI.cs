@@ -8,6 +8,7 @@ namespace CPAScriptSerializer.Modules.ISI {
       {
          {nameof(ISI.Sections.ISI), typeof(ISI.Sections.ISI)},
          {nameof(ISI.Sections.IS2), typeof(ISI.Sections.IS2)},
+         {nameof(ISI.Sections.RLI), typeof(ISI.Sections.RLI)},
       };
    }
 }

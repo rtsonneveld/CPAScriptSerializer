@@ -8,6 +8,7 @@ namespace CPAScriptSerializer.Modules.GAM.Enums {
       Spherical,
       HotSpot,
       Ambient,
-      ParallelBox
+      ParallelBox,
+      Fog
    }
 }

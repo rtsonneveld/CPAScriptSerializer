@@ -13,6 +13,7 @@ namespace CPAScriptSerializer.Modules.PO.Sections {
       {
          { nameof(LOD_Threshold), typeof(LOD_Threshold) },
          { nameof(FichierMOD), typeof(FichierMOD) },
+         { nameof(FichierRLI), typeof(FichierRLI) },
       };
    }
 }

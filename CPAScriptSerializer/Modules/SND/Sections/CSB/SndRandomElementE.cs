@@ -11,7 +11,7 @@ namespace CPAScriptSerializer.Modules.SND.Sections.CSB {
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {
-         { nameof(LoadResource), typeof(LoadResource) },
+         { nameof(LoadResource), typeof(LoadResource.LoadResourceE) },
       };
       
    }

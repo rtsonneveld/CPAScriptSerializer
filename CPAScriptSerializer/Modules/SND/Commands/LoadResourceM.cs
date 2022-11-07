@@ -3,7 +3,7 @@ using CPAScriptSerializer.Modules.SND.Sections.CSB;
 
 namespace CPAScriptSerializer.Modules.SND.Commands
 {
-   public class LoadResource : Command
+   public class LoadResourceM : Command
    {
       [CommandParameter(0)] public CPAScriptReference<SndResourceM> ResourcePath;
    }
