@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CPAScriptSerializer.Modules.SND.Sections.CSB {
    public class SndTrackListM : CPAScriptSection {
-      public SndTrackListM(string sectionId) : base(sectionId)
+      public SndTrackListM(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

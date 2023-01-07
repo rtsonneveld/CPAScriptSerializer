@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CPAScriptSerializer.Modules.IPO.Sections {
    public class IPO : CPAScriptSection {
-      public IPO(string sectionId) : base(sectionId)
+      public IPO(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

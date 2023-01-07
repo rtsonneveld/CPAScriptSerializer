@@ -8,6 +8,6 @@ namespace CPAScriptSerializer.Modules.ISI.Sections {
    /// ISI (Instance Specific Info) of a PO (Physical Object)
    /// </summary>
    public class IS2 : ISI {
-      public IS2(string sectionId) : base(sectionId) { }
+      public IS2(string sectionId, string sectionType) : base(sectionId, sectionType) { }
    }
 }

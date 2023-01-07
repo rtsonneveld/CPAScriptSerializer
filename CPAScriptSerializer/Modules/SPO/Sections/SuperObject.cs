@@ -4,7 +4,7 @@ using CPAScriptSerializer.Modules.SPO.Commands.SuperObject;
 
 namespace CPAScriptSerializer.Modules.SPO.Sections {
    public class SuperObject : CPAScriptSection {
-      public SuperObject(string sectionId) : base(sectionId) { }
+      public SuperObject(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {

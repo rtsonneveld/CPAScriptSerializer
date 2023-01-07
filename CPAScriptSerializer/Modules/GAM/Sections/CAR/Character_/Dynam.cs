@@ -11,7 +11,7 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.CAR.Character_ {
       [CommandParameter(0)] public EnumDynamSize DynamSize;
       [CommandParameter(1)] public int EnableCollision;
 
-      public Dynam(string sectionId) : base(sectionId) { }
+      public Dynam(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {

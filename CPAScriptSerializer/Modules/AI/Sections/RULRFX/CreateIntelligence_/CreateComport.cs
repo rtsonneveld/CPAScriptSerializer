@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using CPAScriptSerializer.Commands;
 using CPAScriptSerializer.Modules.AI.Sections.RULRFX.CreateIntelligence_.CreateComport_;
 
 namespace CPAScriptSerializer.Modules.AI.Sections.RULRFX.CreateIntelligence_ {
    public class CreateComport : CPAScriptSection {
-      public CreateComport(string sectionId) : base(sectionId)
+
+      [CommandParameter(0)] public int ComportIndex; // Todo: add validation
+      [CommandParameter(1)] public int NumberOfRules; // Todo: add validation
+
+      public CreateComport(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

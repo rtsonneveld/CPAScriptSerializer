@@ -12,7 +12,7 @@ namespace CPAScriptSerializer.Modules.SND.Sections.CSB {
       [CommandParameter(0)]
       public EnumEventType EventType;
 
-      public SndEventM(string sectionId) : base(sectionId)
+      public SndEventM(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

@@ -7,7 +7,7 @@ using CPAScriptSerializer.Modules.SND.Commands.CSB.SndThemePartListE;
 
 namespace CPAScriptSerializer.Modules.SND.Sections.CSB {
    public class SndThemePartOutroM : CPAScriptSection {
-      public SndThemePartOutroM(string sectionId) : base(sectionId) { }
+      public SndThemePartOutroM(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using CPAScriptSerializer.Modules.AI.Commands.RULRFX.Nodes;
@@ -223,9 +224,21 @@ namespace CPAScriptSerializer.Commands
 
       #endregion
 
+      private static object GetDefault(Type type)
+      {
+         if (type == null) {
+            return null;
+         }
+         if (type.IsValueType) {
+            return Activator.CreateInstance(type);
+         }
+         return null;
+      }
+
       public static string ExportValue(object? value, CommandParameterAttribute fieldSettings)
       {
-         if (value == default && fieldSettings.CustomDefaultValue != null) {
+         var defaultValue = GetDefault(value?.GetType());
+         if (Object.Equals(value, defaultValue) && fieldSettings.CustomDefaultValue != null) {
             return fieldSettings.CustomDefaultValue;
          }
 
@@ -256,6 +269,7 @@ namespace CPAScriptSerializer.Commands
             bool => valueString.ToUpper(),
             float or double => $"\"{value:F6}\"",
             string => '"' + valueString + '"',
+            EnumOperator op => op.ExportString(),
             _ => valueString
          };
 
@@ -278,6 +292,33 @@ namespace CPAScriptSerializer.Commands
          }
 
          return Enum.Parse<T>(str, ignoreCase);
+      }
+
+
+      public static SortedDictionary<int, string> BuildParameterList(CPAScriptItem item)
+      {
+         SortedDictionary<int, string> parameterList = new SortedDictionary<int, string>();
+
+         var instanceFields = item.GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
+
+         foreach (var field in instanceFields) {
+            var fieldSettings = field.GetCustomAttribute<CommandParameterAttribute>();
+            if (fieldSettings != null) {
+
+               var value = field.GetValue(item);
+
+               bool isValueIgnored = fieldSettings.IgnoreValues!=null && Array.Exists(fieldSettings.IgnoreValues, obj=>
+               {
+                  return obj.GetHashCode() == value.GetHashCode();
+               }); // Compare using hashcode, not references
+
+               if ((value != null || fieldSettings.CustomDefaultValue != null) && !isValueIgnored) {
+                  parameterList.Add(fieldSettings.Index, ExportValue(value, fieldSettings));
+               }
+            }
+         }
+
+         return parameterList;
       }
    }
 }

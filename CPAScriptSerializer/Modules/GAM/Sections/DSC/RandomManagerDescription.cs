@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.GAM.Commands.DSC;
 
 namespace CPAScriptSerializer.Modules.GAM.Sections.DSC {
    public class RandomManagerDescription : CPAScriptSection {
-      public RandomManagerDescription(string sectionId) : base(sectionId)
+      public RandomManagerDescription(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

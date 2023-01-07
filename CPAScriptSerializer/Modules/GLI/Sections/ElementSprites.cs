@@ -14,7 +14,7 @@ namespace CPAScriptSerializer.Modules.GLI.Sections {
    {
       [CommandParameter(0)] public int NumberOfSprites;
 
-      public ElementSprites(string sectionId) : base(sectionId) { }
+      public ElementSprites(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {

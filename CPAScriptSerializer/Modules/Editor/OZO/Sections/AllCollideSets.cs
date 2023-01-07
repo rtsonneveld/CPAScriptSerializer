@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CPAScriptSerializer.Modules.Editor.OZO.Sections {
    public class AllCollideSets : CPAScriptSection {
-      public AllCollideSets(string sectionId) : base(sectionId)
+      public AllCollideSets(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

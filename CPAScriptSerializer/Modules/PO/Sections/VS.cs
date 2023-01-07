@@ -9,7 +9,7 @@ namespace CPAScriptSerializer.Modules.PO.Sections {
       // TODO: Validate LOD Count
       [CommandParameter(0)] public int LODCount;
 
-      public VS(string sectionId) : base(sectionId)
+      public VS(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

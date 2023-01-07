@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CPAScriptSerializer.Modules.PO.Sections {
    public class PHY : CPAScriptSection {
-      public PHY(string sectionId) : base(sectionId)
+      public PHY(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

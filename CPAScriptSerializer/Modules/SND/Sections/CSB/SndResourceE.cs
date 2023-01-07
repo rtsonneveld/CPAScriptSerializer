@@ -8,7 +8,7 @@ namespace CPAScriptSerializer.Modules.SND.Sections.CSB
    [UnusedByCPA]
    public class SndResourceE : CPAScriptSection
    {
-      public SndResourceE(string sectionId) : base(sectionId)
+      public SndResourceE(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

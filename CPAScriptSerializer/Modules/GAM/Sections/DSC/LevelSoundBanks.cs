@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.GAM.Commands.DSC;
 
 namespace CPAScriptSerializer.Modules.GAM.Sections.DSC {
    public class LevelSoundBanks : CPAScriptSection {
-      public LevelSoundBanks(string sectionId) : base(sectionId)
+      public LevelSoundBanks(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

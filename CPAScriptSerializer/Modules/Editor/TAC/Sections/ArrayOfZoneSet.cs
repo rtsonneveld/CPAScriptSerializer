@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CPAScriptSerializer.Modules.Editor.TAC.Sections {
    public class ArrayOfZoneSet : CPAScriptSection {
-      public ArrayOfZoneSet(string sectionId) : base(sectionId)
+      public ArrayOfZoneSet(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

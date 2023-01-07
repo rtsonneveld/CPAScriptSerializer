@@ -6,7 +6,7 @@ using Type = System.Type;
 namespace CPAScriptSerializer.Modules.GMT.Sections {
    public class Material : CPAScriptSection {
 
-      public Material(string sectionId) : base(sectionId)
+      public Material(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

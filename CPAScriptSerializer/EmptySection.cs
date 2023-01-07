@@ -9,7 +9,7 @@ namespace CPAScriptSerializer {
    /// </summary>
    public class EmptySection : CPAScriptSection {
 
-      public EmptySection(string sectionId) : base(sectionId) { }
+      public EmptySection(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new() { };
       public override Type CommandTypeFallback(string name)

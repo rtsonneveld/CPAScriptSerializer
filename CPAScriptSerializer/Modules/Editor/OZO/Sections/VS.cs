@@ -5,7 +5,7 @@ using System.Text;
 namespace CPAScriptSerializer.Modules.Editor.OZO.Sections {
 
    public class VS : CPAScriptSection {
-      public VS(string sectionId) : base(sectionId)
+      public VS(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

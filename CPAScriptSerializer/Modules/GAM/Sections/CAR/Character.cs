@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.GAM.Sections.CAR.Character_;
 
 namespace CPAScriptSerializer.Modules.GAM.Sections.CAR {
    public class Character : CPAScriptSection {
-      public Character(string sectionId) : base(sectionId) { }
+      public Character(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {

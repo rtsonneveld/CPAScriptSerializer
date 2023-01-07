@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.SND.Commands.CSB;
 
 namespace CPAScriptSerializer.Modules.SND.Sections.CSB {
    public class SoundBankList : CPAScriptSection {
-      public SoundBankList(string sectionId) : base(sectionId)
+      public SoundBankList(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

@@ -77,9 +77,9 @@ namespace CPAScriptSerializer
             throw new ArgumentException($"Unknown section type {sectionType}");
          }
 
-         var constructor = SectionTypes[sectionType].GetConstructor(new Type[] { typeof(string) });
+         var constructor = SectionTypes[sectionType].GetConstructor(new Type[] { typeof(string), typeof(string) });
          if (constructor != null) {
-            return Activator.CreateInstance(SectionTypes[sectionType], sectionId) as CPAScriptSection;
+            return Activator.CreateInstance(SectionTypes[sectionType], sectionId, sectionType) as CPAScriptSection;
          }
 
          return null;
@@ -90,19 +90,19 @@ namespace CPAScriptSerializer
       /// </summary>
       public abstract Dictionary<string, Type> SectionTypes { get; }
 
-      public void Read(Stream s)
+      public void Read(Stream s, Encoding encoding)
       {
          Items = new List<CPAScriptItem>();
 
-         using StreamReader reader = new StreamReader(s);
+         using StreamReader reader = new StreamReader(s, encoding);
          while (!reader.EndOfStream) {
             ParseLine(reader.ReadLine(), reader);
          }
       }
 
-      public void Write(Stream s)
+      public void Write(Stream s, Encoding encoding)
       {
-         using StreamWriter writer = new StreamWriter(s);
+         using StreamWriter writer = new StreamWriter(s, encoding);
 
          int indent = 0;
 
@@ -122,10 +122,11 @@ namespace CPAScriptSerializer
 
          CPAScriptItem item = null;
 
-         switch (line[0]) {
+         string trimmedLine = line.Trim();
+         switch (trimmedLine[0]) {
             case MarkSectionBegin:
 
-               CPAScriptSection.Parse(line, out string sectionType, out string sectionId);
+               CPAScriptSection.Parse(trimmedLine, out string sectionType, out string sectionId);
                item = GenerateSection(sectionType, sectionId);
 
                if (item == null) {
@@ -143,14 +144,17 @@ namespace CPAScriptSerializer
                item = new CPAScriptComment();
 
                break;
-            default: break;
+            default:
+
+               item = new CPAScriptComment();
+               Debug.WriteLine($"Warning: unable to parse line: {line}, parsing as comment...");
+
+               break;
          }
 
          if (item != null) {
             item.Read(this, null, reader, line);
             Items.Add(item);
-         } else {
-            Debug.WriteLine($"Warning: unable to parse line: {line}");
          }
       }
 

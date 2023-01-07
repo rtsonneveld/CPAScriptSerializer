@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.Editor.TGM.Commands;
 
 namespace CPAScriptSerializer.Modules.Editor.TGM.Sections {
    public class CollideMaterial : CPAScriptSection {
-      public CollideMaterial(string sectionId) : base(sectionId)
+      public CollideMaterial(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

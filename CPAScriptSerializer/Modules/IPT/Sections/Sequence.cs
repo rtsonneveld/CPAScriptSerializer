@@ -12,7 +12,7 @@ namespace CPAScriptSerializer.Modules.IPT.Sections {
       public const string Key = "Key";
       public const string Pad = "Pad";
 
-      public Sequence(string sectionId) : base(sectionId) { }
+      public Sequence(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {

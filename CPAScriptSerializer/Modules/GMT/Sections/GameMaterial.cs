@@ -9,7 +9,7 @@ namespace CPAScriptSerializer.Modules.GMT.Sections {
    public class GameMaterial : CPAScriptSection
    {
 
-      public GameMaterial(string sectionId) : base(sectionId)
+      public GameMaterial(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

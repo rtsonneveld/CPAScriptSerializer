@@ -12,7 +12,7 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.CAR.Character_ {
       [CommandParameter(0)]
       public EnumLightType LightType;
 
-      public MSLight(string sectionId) : base(sectionId)
+      public MSLight(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using CPAScriptSerializer.Commands;
 using CPAScriptSerializer.Modules.IPT.Commands;
 using CPAScriptSerializer.Modules.IPT.Commands.Input;
 using CPAScriptSerializer.Modules.IPT.Commands.Logical;
 
 namespace CPAScriptSerializer.Modules.IPT.Sections
 {
-   public class InputAction : CPAScriptSection {
-      
-      public InputAction(string sectionId) : base(sectionId)
+   public class InputAction : CPAScriptSection
+   {
+
+      [CommandParameter(0)] public string IsOptions;
+
+      public InputAction(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

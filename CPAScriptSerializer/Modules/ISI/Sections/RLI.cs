@@ -9,12 +9,13 @@ namespace CPAScriptSerializer.Modules.ISI.Sections {
    /// <summary>
    /// Received Light Intensity
    /// </summary>
-   public class RLI : CPAScriptSection {
+   public class RLI : CPAScriptSection
+   {
 
-      // [CommandParameter(0)] NBRLI
+      [UnusedByCPA] [CommandParameter(0)] public string NBRLI = "nbrli";
       [CommandParameter(1)] public int NumberOfRLI;
 
-      public RLI(string sectionId) : base(sectionId)
+      public RLI(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

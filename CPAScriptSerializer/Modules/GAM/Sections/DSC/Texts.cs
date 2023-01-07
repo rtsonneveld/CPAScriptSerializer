@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.GAM.Commands.DSC;
 
 namespace CPAScriptSerializer.Modules.GAM.Sections.DSC {
    internal class Texts : CPAScriptSection {
-      public Texts(string sectionId) : base(sectionId)
+      public Texts(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

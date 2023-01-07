@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.IPO.Commands;
 
 namespace CPAScriptSerializer.Modules.IPO.Sections {
    public class IPO_HEADER : CPAScriptSection {
-      public IPO_HEADER(string sectionId) : base(sectionId)
+      public IPO_HEADER(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

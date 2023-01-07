@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CPAScriptSerializer.Modules.Editor.TSI.Sections {
    public class SIF_Type : CPAScriptSection {
-      public SIF_Type(string sectionId) : base(sectionId)
+      public SIF_Type(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

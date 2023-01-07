@@ -6,7 +6,7 @@ using CPAScriptSerializer.Modules.GAM.Commands.CAR.Cineinfo;
 namespace CPAScriptSerializer.Modules.GAM.Sections.CAR.Character_ {
    public class Cineinfo : CPAScriptSection {
 
-      public Cineinfo(string sectionId) : base(sectionId)
+      public Cineinfo(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

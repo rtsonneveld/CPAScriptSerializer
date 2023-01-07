@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CPAScriptSerializer.Modules.Editor.TAC.Sections {
    public class AddActivation : CPAScriptSection {
-      public AddActivation(string sectionId) : base(sectionId)
+      public AddActivation(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

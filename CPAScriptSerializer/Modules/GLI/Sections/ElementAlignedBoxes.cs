@@ -14,7 +14,7 @@ namespace CPAScriptSerializer.Modules.GLI.Sections {
    {
       [CommandParameter(0)] public int NumberOfSpheres;
 
-      public ElementAlignedBoxes(string sectionId) : base(sectionId) { }
+      public ElementAlignedBoxes(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {

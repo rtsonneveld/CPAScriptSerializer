@@ -11,7 +11,7 @@ namespace CPAScriptSerializer.Modules.SND.Sections.LCB
    [UnusedByCPA]
    public class SndBankE : CPAScriptSection
    {
-      public SndBankE(string sectionId) : base(sectionId)
+      public SndBankE(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

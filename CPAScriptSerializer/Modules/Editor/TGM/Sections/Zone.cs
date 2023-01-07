@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CPAScriptSerializer.Modules.Editor.TGM.Sections {
    public class Zone : CPAScriptSection {
-      public Zone(string sectionId) : base(sectionId)
+      public Zone(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
       
@@ -18,19 +18,19 @@ namespace CPAScriptSerializer.Modules.Editor.TGM.Sections {
 
       public class ZDD : Zone
       {
-         public ZDD(string sectionId) : base(sectionId) { }
+         public ZDD(string sectionId, string sectionType) : base(sectionId, sectionType) { }
       };
 
       public class ZDE : Zone {
-         public ZDE(string sectionId) : base(sectionId) { }
+         public ZDE(string sectionId, string sectionType) : base(sectionId, sectionType) { }
       };
 
       public class ZDM : Zone {
-         public ZDM(string sectionId) : base(sectionId) { }
+         public ZDM(string sectionId, string sectionType) : base(sectionId, sectionType) { }
       };
 
       public class ZDR : Zone {
-         public ZDR(string sectionId) : base(sectionId) { }
+         public ZDR(string sectionId, string sectionType) : base(sectionId, sectionType) { }
       };
    }
 }

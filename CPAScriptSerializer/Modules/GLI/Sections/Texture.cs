@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.GLI.Commands.Texture;
 
 namespace CPAScriptSerializer.Modules.GLI.Sections {
    public class Texture : CPAScriptSection {
-      public Texture(string sectionId) : base(sectionId)
+      public Texture(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

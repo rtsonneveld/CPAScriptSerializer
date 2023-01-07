@@ -19,7 +19,7 @@ namespace CPAScriptSerializer.Modules.GLI.Sections {
       [CommandParameter(2)]
       public int NbElements;
 
-      public Geometric(string sectionId) : base(sectionId)
+      public Geometric(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

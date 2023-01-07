@@ -10,5 +10,7 @@ namespace CPAScriptSerializer.Modules.GMT.Commands.Material {
    {
       [CommandParameter(0)] public int Index;
       [CommandParameter(1)] public CPAScriptReference<Texture> TextureRef;
+      // Optional for animated textures
+      [CommandParameter(2, ignoreValues: new object[]{0})] public float ExpositionTimeInSeconds;
    }
 }

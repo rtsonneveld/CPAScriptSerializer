@@ -16,7 +16,7 @@ namespace CPAScriptSerializer.Modules.Editor.OAC.Commands.MiniStructureCommands 
       public class BoundDist_Min : MiniStructureCommandBase {[CommandParameter(1)] public float BoundDistMinValue; }
       public class BoundDistMin_Init : MiniStructureCommandBase {[CommandParameter(1)] public float BoundDistMinInitValue; }
       public class BoundDist_Max : MiniStructureCommandBase {[CommandParameter(1)] public float BoundDistMaxValue; }
-      public class BoundDistMax_Init : MiniStructureCommandBase {[CommandParameter(1)] float BoundDistMaxInitValue; }
+      public class BoundDistMax_Init : MiniStructureCommandBase {[CommandParameter(1)] public float BoundDistMaxInitValue; }
       public class Alpha : MiniStructureCommandBase {[CommandParameter(1)] public float AlphaValue; }
       public class Alpha_Init : MiniStructureCommandBase {[CommandParameter(1)] public float AlphaInitValue; }
       public class Shift_Alpha : MiniStructureCommandBase {[CommandParameter(1)] public float Shift_AlphaValue; }

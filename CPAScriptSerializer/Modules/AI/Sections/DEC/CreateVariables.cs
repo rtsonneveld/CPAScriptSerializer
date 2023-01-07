@@ -12,7 +12,7 @@ namespace CPAScriptSerializer.Modules.AI.Sections.DEC {
       [CommandParameter(0)] public int DsgMemSize;
       [CommandParameter(1)] public int NumberOfVariables;
 
-      public CreateVariables(string sectionId) : base(sectionId)
+      public CreateVariables(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

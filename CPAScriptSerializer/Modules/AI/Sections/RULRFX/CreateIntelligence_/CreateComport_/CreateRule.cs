@@ -12,7 +12,7 @@ namespace CPAScriptSerializer.Modules.AI.Sections.RULRFX.CreateIntelligence_.Cre
       [CommandParameter(1)] public int NodeCount;
       // TODO: enforce NodeCount
 
-      public CreateRule(string sectionId) : base(sectionId)
+      public CreateRule(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

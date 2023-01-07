@@ -11,10 +11,10 @@ namespace CPAScriptSerializer.Modules.ISI.Sections {
    /// </summary>
    public class ISI : CPAScriptSection {
 
-      // [CommandParameter(0)] NBRLOD
+      [CommandParameter(0)] public string ParameterName;
       [CommandParameter(1)] public int NumberOfLOD;
 
-      public ISI(string sectionId) : base(sectionId)
+      public ISI(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

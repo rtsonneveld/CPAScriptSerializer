@@ -5,5 +5,5 @@ using CPAScriptSerializer.Commands;
 using CPAScriptSerializer.Commands.Generic;
 
 namespace CPAScriptSerializer.Modules.GMT.Commands.Material {
-   public class DiffuseColor : Color3fCommand { }
+   public class DiffuseColor : Color4fCommandOptionalAlpha { }
 }

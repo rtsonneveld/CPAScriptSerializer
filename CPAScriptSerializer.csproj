@@ -9,8 +9,11 @@
 
   <ItemGroup>
     <Compile Remove="TestFiles\**" />
+    <Compile Remove="TestGameData\**" />
     <EmbeddedResource Remove="TestFiles\**" />
+    <EmbeddedResource Remove="TestGameData\**" />
     <None Remove="TestFiles\**" />
+    <None Remove="TestGameData\**" />
   </ItemGroup>
 
   <ItemGroup>

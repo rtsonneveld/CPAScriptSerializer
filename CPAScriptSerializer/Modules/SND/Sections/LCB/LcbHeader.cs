@@ -7,7 +7,7 @@ namespace CPAScriptSerializer.Modules.SND.Sections.LCB
 {
    public class LcbHeader : CPAScriptSection
    {
-      public LcbHeader(string sectionId) : base(sectionId)
+      public LcbHeader(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

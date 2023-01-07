@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.Editor.OZO.Commands;
 
 namespace CPAScriptSerializer.Modules.Editor.OZO.Sections {
    public class SetBoundingVolume : CPAScriptSection {
-      public SetBoundingVolume(string sectionId) : base(sectionId)
+      public SetBoundingVolume(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

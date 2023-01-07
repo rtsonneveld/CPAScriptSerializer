@@ -11,7 +11,7 @@ namespace CPAScriptSerializer.Modules.SND.Sections.CSB {
 
       [CommandParameter(0)] public int Index;
 
-      public SndTrackM(string sectionId) : base(sectionId) { }
+      public SndTrackM(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {

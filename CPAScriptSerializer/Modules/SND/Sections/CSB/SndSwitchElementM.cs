@@ -8,7 +8,7 @@ namespace CPAScriptSerializer.Modules.SND.Sections.CSB
 {
     public class SndSwitchElementM : CPAScriptSection
     {
-        public SndSwitchElementM(string sectionId) : base(sectionId) { }
+        public SndSwitchElementM(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
         public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
         {

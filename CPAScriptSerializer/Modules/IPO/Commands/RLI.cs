@@ -7,6 +7,7 @@ using CPAScriptSerializer.Modules.PO.Sections;
 namespace CPAScriptSerializer.Modules.IPO.Commands {
    public class RLI : Command
    {
-      [CommandParameter(0)] public CPAScriptReference<ISI.Sections.ISI> InstanceSpecificInfo;
+      [CommandParameter(0)] public string ParameterName;
+      [CommandParameter(1)] public CPAScriptReference<ISI.Sections.ISI> InstanceSpecificInfo;
    }
 }

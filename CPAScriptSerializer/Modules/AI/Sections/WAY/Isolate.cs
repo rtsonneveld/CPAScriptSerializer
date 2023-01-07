@@ -5,7 +5,7 @@ namespace CPAScriptSerializer.Modules.AI.Sections.WAY
 {
    public class Isolate : CPAScriptSection
    {
-      public Isolate(string sectionId) : base(sectionId)
+      public Isolate(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

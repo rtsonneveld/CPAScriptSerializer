@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using CPAScriptSerializer.Commands;
 using CPAScriptSerializer.Modules.AI.Commands.WAY;
 
 namespace CPAScriptSerializer.Modules.AI.Sections.WAY
 {
    public class WPSommet : CPAScriptSection
    {
-      public WPSommet(string sectionId) : base(sectionId)
+      // TODO: it seems the editor expects two arguments here, not one, weight and capabilities? check wpwaypt.c line 788
+      [CommandParameter(0)] public string Capabilities;
+      /// TODO: Create a special type for this (capabilities/bits)
+
+      public WPSommet(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

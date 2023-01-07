@@ -7,7 +7,7 @@ namespace CPAScriptSerializer.Modules.AI.Sections.WAY
    // Only used as subsection
    public class Waypoint : CPAScriptSection
    {
-      public Waypoint(string sectionId) : base(sectionId)
+      public Waypoint(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

@@ -4,6 +4,6 @@ using System.Text;
 
 namespace CPAScriptSerializer.Modules.AI.Sections.RULRFX.CreateIntelligence_.CreateComport_ {
    public class CreateSchedule : CreateRule {
-      public CreateSchedule(string sectionId) : base(sectionId) { }
+      public CreateSchedule(string sectionId, string sectionType) : base(sectionId, sectionType) { }
    }
 }

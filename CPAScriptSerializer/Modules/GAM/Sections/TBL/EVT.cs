@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.GAM.Commands.TBL.EVT;
 
 namespace CPAScriptSerializer.Modules.GAM.Sections.TBL {
    public class EVT : CPAScriptSection {
-      public EVT(string sectionId) : base(sectionId) { }
+      public EVT(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {

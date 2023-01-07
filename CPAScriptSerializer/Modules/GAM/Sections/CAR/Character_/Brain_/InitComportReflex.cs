@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.AI.Sections.RULRFX.CreateIntelligence_;
 
 namespace CPAScriptSerializer.Modules.GAM.Sections.CAR.Character_.Brain_ {
    public class InitComportReflex : CPAScriptSection {
-      public InitComportReflex(string sectionId) : base(sectionId)
+      public InitComportReflex(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

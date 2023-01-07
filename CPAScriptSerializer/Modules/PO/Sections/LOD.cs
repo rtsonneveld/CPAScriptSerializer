@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.PO.Commands;
 
 namespace CPAScriptSerializer.Modules.PO.Sections {
    public class LOD : CPAScriptSection {
-      public LOD(string sectionId) : base(sectionId)
+      public LOD(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

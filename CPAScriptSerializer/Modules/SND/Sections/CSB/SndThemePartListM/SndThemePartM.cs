@@ -11,7 +11,7 @@ namespace CPAScriptSerializer.Modules.SND.Commands.CSB.SndThemePartListE
       private const string SetStartLoop = "SetStartLoop";
       private const string SetEndLoop = "SetEndLoop";
 
-      public SndThemePartM(string sectionId) : base(sectionId)
+      public SndThemePartM(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

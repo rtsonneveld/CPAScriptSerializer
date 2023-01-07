@@ -4,7 +4,7 @@ using CPAScriptSerializer.Modules.SPO.Commands.Matrix;
 
 namespace CPAScriptSerializer.Modules.SPO.Sections {
    public class Matrix : CPAScriptSection {
-      public Matrix(string sectionId) : base(sectionId) { }
+      public Matrix(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {

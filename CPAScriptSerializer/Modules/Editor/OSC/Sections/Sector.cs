@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.Editor.OSC.Commands;
 
 namespace CPAScriptSerializer.Modules.Editor.OSC.Sections {
    public class Sector : CPAScriptSection {
-      public Sector(string sectionId) : base(sectionId)
+      public Sector(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

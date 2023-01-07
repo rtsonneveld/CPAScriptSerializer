@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.GAM.Commands.DSC;
 
 namespace CPAScriptSerializer.Modules.GAM.Sections.DSC {
    public class BigFiles : CPAScriptSection {
-      public BigFiles(string sectionId) : base(sectionId)
+      public BigFiles(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

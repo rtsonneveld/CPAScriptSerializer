@@ -10,7 +10,7 @@ namespace CPAScriptSerializer.Modules.Editor.OSC.Sections {
       private const string MinPointOfBorder = "MinPointOfBorder";
       private const string MaxPointOfBorder = "MaxPointOfBorder";
 
-      public Border(string sectionId) : base(sectionId)
+      public Border(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

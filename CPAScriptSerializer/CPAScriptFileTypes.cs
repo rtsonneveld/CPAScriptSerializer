@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 
 namespace CPAScriptSerializer {
    public abstract partial class CPAScript {
@@ -133,13 +134,18 @@ namespace CPAScriptSerializer {
          DONE File extension .mem is not associated with any CPA script, or support hasn't been added yet!
          UNUSED File extension .mev is not associated with any CPA script, or support hasn't been added yet!
          UNUSED File extension .mmt is not associated with any CPA script, or support hasn't been added yet!
-         TODO File extension .sct is not associated with any CPA script, or support hasn't been added yet!
+         DONE File extension .sct is not associated with any CPA script, or support hasn't been added yet!
          UNUSED File extension .srf is not associated with any CPA script, or support hasn't been added yet!
          NO SUPPORT File extension .txt is not associated with any CPA script, or support hasn't been added yet!
          NO SUPPORT File extension .vev is not associated with any CPA script, or support hasn't been added yet!
        */
 
       public static CPAScript ReadFile(string path)
+      {
+         return ReadFile(path, Encoding.Default);
+      }
+
+      public static CPAScript ReadFile(string path, Encoding encoding)
       {
          if (!File.Exists(path)) {
             throw new FileNotFoundException();
@@ -170,7 +176,7 @@ namespace CPAScriptSerializer {
          }
 
          using (var stream = File.OpenRead(path)) {
-            script.Read(stream);
+            script.Read(stream, encoding);
          }
 
          return script;

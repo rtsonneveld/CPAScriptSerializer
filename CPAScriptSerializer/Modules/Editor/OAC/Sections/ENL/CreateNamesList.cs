@@ -10,7 +10,7 @@ namespace CPAScriptSerializer.Modules.Editor.OAC.Sections.ENL
    {
       [CommandParameter(0)] public EnumNameListType ListType;
 
-      public CreateNamesList(string sectionId) : base(sectionId)
+      public CreateNamesList(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

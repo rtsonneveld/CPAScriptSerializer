@@ -6,7 +6,7 @@ using CPAScriptSerializer.Modules.MEC.Commands;
 
 namespace CPAScriptSerializer.Modules.MEC.Sections {
    public class IdCardCamera : CPAScriptSection {
-      public IdCardCamera(string sectionId) : base(sectionId)
+      public IdCardCamera(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

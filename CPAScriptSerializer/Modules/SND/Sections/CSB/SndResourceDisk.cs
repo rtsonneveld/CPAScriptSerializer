@@ -15,7 +15,7 @@ using ResSwitch = CPAScriptSerializer.Modules.SND.Commands.CSB.SndResourceDiskOp
 namespace CPAScriptSerializer.Modules.SND.Sections.CSB {
    public class SndResourceDisk : CPAScriptSection {
 
-      public SndResourceDisk(string sectionId) : base(sectionId) { }
+      public SndResourceDisk(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       [CommandParameter(0)]
       public EnumResourceType ResourceType;

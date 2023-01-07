@@ -7,7 +7,7 @@ namespace CPAScriptSerializer.Modules.Editor.OAC.Sections.ENL
 {
    public class AddENL : CPAScriptSection
    {
-      public AddENL(string sectionId) : base(sectionId)
+      public AddENL(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

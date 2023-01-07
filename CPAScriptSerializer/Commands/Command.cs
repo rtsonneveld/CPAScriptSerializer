@@ -16,7 +16,7 @@ namespace CPAScriptSerializer.Commands
       /// <summary>
       /// Override this method to use a different export name
       /// </summary>
-      public virtual string ExportName => this.GetType().Name;
+      public virtual string ExportName => string.IsNullOrEmpty(Name) ? GetType().Name : Name;
 
       /// <summary>
       /// Parses a command from a line
@@ -57,7 +57,7 @@ namespace CPAScriptSerializer.Commands
          // Parse format
          format = string.Empty;
 
-         if (formatBegin > 0 && formatEnd > formatBegin + 1) {
+         if (formatBegin > 0 && formatEnd > formatBegin + 1 && formatBegin<paramBegin) {
             format = line[(formatBegin + 1)..(formatEnd)];
          }
       }
@@ -89,20 +89,7 @@ namespace CPAScriptSerializer.Commands
       public virtual void Write(ref int indent, StreamWriter writer)
       {
          ValidateParameters();
-         List<string> parameterList = new List<string>();
-
-         var instanceFields = GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
-
-         foreach (var field in instanceFields) {
-            var fieldSettings = field.GetCustomAttribute<CommandParameterAttribute>();
-            if (fieldSettings != null) {
-
-               var value = field.GetValue(this);
-               if (value != null) {
-                  parameterList.Add(Parameter.ExportValue(value, fieldSettings));
-               }
-            }
-         }
+         var parameterList = Parameter.BuildParameterList(this);
 
          // TypeName[parameters](parameter1,parameter2,...)
          // Examples:
@@ -112,7 +99,7 @@ namespace CPAScriptSerializer.Commands
          string format = string.IsNullOrWhiteSpace(Format)
             ? string.Empty
             : CPAScript.MarkFormatBegin + Format + CPAScript.MarkFormatEnd;
-         string parameters = string.Join(CPAScript.MarkParamSeparator, parameterList);
+         string parameters = string.Join(CPAScript.MarkParamSeparator, parameterList.Values);
 
          writer.WriteLine($"{CPAScript.Indent(indent)}" +
                           $"{(string.IsNullOrWhiteSpace(Name) ? ExportName : Name)}" +

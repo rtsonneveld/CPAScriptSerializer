@@ -8,7 +8,7 @@ namespace CPAScriptSerializer.Modules.SND.Sections.CSB {
 
       private const string TestString = "TestString";
 
-      public ResPlugInData(string sectionId) : base(sectionId) { }
+      public ResPlugInData(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {

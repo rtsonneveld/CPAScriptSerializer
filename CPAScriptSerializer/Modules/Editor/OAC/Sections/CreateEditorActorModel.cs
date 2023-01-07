@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CPAScriptSerializer.Modules.Editor.OAC.Sections {
    public class CreateEditorActorModel : CPAScriptSection {
-      public CreateEditorActorModel(string sectionId) : base(sectionId)
+      public CreateEditorActorModel(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

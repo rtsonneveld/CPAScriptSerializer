@@ -11,7 +11,7 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.DSC {
       public const string BinaryMemoryDescriptionPass1 = "NewBinaryMemoryDescriptionPass1";
       public const string BinaryMemoryDescriptionPass2 = "NewBinaryMemoryDescriptionPass2";
 
-      public MemoryDescription(string sectionId) : base(sectionId)
+      public MemoryDescription(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 
@@ -34,7 +34,7 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.DSC {
          {MemoryCommand.PositionMemorySize, typeof(MemoryCommand)},
          {MemoryCommand.SAIFixMemorySize, typeof(MemoryCommand)},
          {MemoryCommand.SAIMemorySize, typeof(MemoryCommand)},
-         {MemoryCommand.ScriptMemorySize, typeof(MemoryCommand)},
+         {MemoryCommand.ScriptMemorySize, typeof(ScriptMemorySize)},
          {MemoryCommand.SuperObjectMemorySize, typeof(MemoryCommand)},
          {MemoryCommand.TMPFixMemory, typeof(MemoryCommand)},
          {MemoryCommand.TMPLevelMemory, typeof(MemoryCommand)},

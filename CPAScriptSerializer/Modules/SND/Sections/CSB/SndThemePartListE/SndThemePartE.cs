@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CPAScriptSerializer.Modules.SND.Commands.CSB.SndThemePartListE {
    public class SndThemePartE : CPAScriptSection {
-      public SndThemePartE(string sectionId) : base(sectionId)
+      public SndThemePartE(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

@@ -8,7 +8,7 @@ namespace CPAScriptSerializer.Modules.SND.Sections.CSB
 {
    public class CsbHeader : CPAScriptSection
    {
-      public CsbHeader(string sectionId) : base(sectionId)
+      public CsbHeader(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

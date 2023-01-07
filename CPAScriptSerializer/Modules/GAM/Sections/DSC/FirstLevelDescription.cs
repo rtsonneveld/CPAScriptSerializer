@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.GAM.Commands.DSC;
 
 namespace CPAScriptSerializer.Modules.GAM.Sections.DSC {
    public class FirstLevelDescription : CPAScriptSection {
-      public FirstLevelDescription(string sectionId) : base(sectionId)
+      public FirstLevelDescription(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

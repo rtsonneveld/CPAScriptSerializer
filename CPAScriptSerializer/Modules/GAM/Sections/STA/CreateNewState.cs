@@ -7,7 +7,7 @@ using CPAScriptSerializer.Modules.GAM.Commands.STA;
 namespace CPAScriptSerializer.Modules.GAM.Sections.STA {
    public class CreateNewState : CPAScriptSection
    {
-      public CreateNewState(string sectionId) : base(sectionId) { }
+      public CreateNewState(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       [CommandParameter(0)]
       public string StateName;

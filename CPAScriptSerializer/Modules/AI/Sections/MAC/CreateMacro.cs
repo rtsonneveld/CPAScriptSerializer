@@ -6,6 +6,6 @@ using CPAScriptSerializer.Modules.AI.Sections.RULRFX.CreateIntelligence_.CreateC
 namespace CPAScriptSerializer.Modules.AI.Sections.MAC {
    public class CreateMacro : CreateRule
    {
-      public CreateMacro(string sectionId) : base(sectionId) { }
+      public CreateMacro(string sectionId, string sectionType) : base(sectionId, sectionType) { }
    }
 }

@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.SNA.Commands.PGB;
 
 namespace CPAScriptSerializer.Modules.SNA.Sections {
    public class Vignette : CPAScriptSection {
-      public Vignette(string sectionId) : base(sectionId) { }
+      public Vignette(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {

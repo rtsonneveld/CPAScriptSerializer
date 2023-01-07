@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.AI.Commands.AI;
 
 namespace CPAScriptSerializer.Modules.AI.Sections.AI {
    public class CreateAIDefines : CPAScriptSection {
-      public CreateAIDefines(string sectionId) : base(sectionId)
+      public CreateAIDefines(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

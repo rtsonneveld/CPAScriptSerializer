@@ -5,6 +5,6 @@ using System.Text;
 namespace CPAScriptSerializer.Modules.IPO.Sections {
    public class IPO_MIRROR : IPO
    {
-      public IPO_MIRROR(string sectionId) : base(sectionId) { }
+      public IPO_MIRROR(string sectionId, string sectionType) : base(sectionId, sectionType) { }
    }
 }

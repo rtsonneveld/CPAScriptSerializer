@@ -8,7 +8,7 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.CHL {
 
       [CommandParameter(0)] public int NumberOfChannels;
 
-      public A3dChannelNames(string sectionId) : base(sectionId) { }
+      public A3dChannelNames(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {

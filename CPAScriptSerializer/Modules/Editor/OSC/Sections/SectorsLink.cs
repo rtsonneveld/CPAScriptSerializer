@@ -10,7 +10,7 @@ namespace CPAScriptSerializer.Modules.Editor.OSC.Sections
    {
       private const string Virtual = "Virtual";
 
-      public SectorsLink(string sectionId) : base(sectionId)
+      public SectorsLink(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

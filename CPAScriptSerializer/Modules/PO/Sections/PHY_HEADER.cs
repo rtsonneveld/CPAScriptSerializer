@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.PO.Commands;
 
 namespace CPAScriptSerializer.Modules.PO.Sections {
    public class PHY_HEADER : CPAScriptSection {
-      public PHY_HEADER(string sectionId) : base(sectionId)
+      public PHY_HEADER(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.Editor.OZO.Commands;
 
 namespace CPAScriptSerializer.Modules.Editor.OZO.Sections {
    public class CS : CPAScriptSection {
-      public CS(string sectionId) : base(sectionId) { }
+      public CS(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {

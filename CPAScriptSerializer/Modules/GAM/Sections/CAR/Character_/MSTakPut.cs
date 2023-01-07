@@ -9,7 +9,7 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.CAR.Character_ {
    /// </summary>
    [UnusedByCPA]
    public class MSTakPut : CPAScriptSection {
-      public MSTakPut(string sectionId) : base(sectionId)
+      public MSTakPut(string sectionId, string sectionType) : base(sectionId, sectionType)
       { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()

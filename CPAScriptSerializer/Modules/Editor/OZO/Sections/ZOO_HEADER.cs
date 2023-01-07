@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.Editor.OZO.Commands;
 
 namespace CPAScriptSerializer.Modules.Editor.OZO.Sections {
    public class ZOO_HEADER : CPAScriptSection {
-      public ZOO_HEADER(string sectionId) : base(sectionId)
+      public ZOO_HEADER(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

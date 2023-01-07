@@ -11,7 +11,7 @@ namespace CPAScriptSerializer.Modules.Editor.OAC.Sections {
       [CommandParameter(0)] public EnumGroup Group;
       [CommandParameter(1)] public EnumAllocation Allocation;
 
-      public MiniStructure(string sectionId) : base(sectionId) { }
+      public MiniStructure(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       // Note: EditorActor MiniStructures are defined in EdActors_EditorActor::m_fn_vConstructListOfMS
       /*

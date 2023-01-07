@@ -12,6 +12,7 @@ namespace CPAScriptSerializer
    public abstract class CPAScriptSection : CPAScriptItem
    {
       public string SectionId;
+      public string SectionType;
 
       /// <summary>
       /// Override this to change how the ID of this section is exported, by default this returns SectionId
@@ -20,7 +21,7 @@ namespace CPAScriptSerializer
       /// <summary>
       /// Override this to change how the type name of this section is exported.
       /// </summary>
-      public virtual string SectionExportType => GetType().Name;
+      public virtual string SectionExportType => SectionType;
 
       /// <summary>
       /// Dictionary values must be a Type that inherits CPAScriptCommand
@@ -35,10 +36,11 @@ namespace CPAScriptSerializer
       public List<CPAScriptItem> Items;
       public string Format;
 
-      public CPAScriptSection(string sectionId)
+      public CPAScriptSection(string sectionId, string sectionType = null)
       {
          Command.Parse(sectionId, out string commandName, out Format, out var parameters);
          SectionId = commandName;
+         SectionType = sectionType ?? GetType().Name;
          Fill(parameters);
          Items = new List<CPAScriptItem>();
       }
@@ -157,25 +159,13 @@ namespace CPAScriptSerializer
 
       public void Write(ref int indent, StreamWriter writer)
       {
-         List<string> parameterList = new List<string>();
-
-         var instanceFields = GetType().GetFields(BindingFlags.Public | BindingFlags.Instance);
-
-         foreach (var field in instanceFields) {
-            var fieldSettings = field.GetCustomAttribute<CommandParameterAttribute>();
-            if (fieldSettings != null) {
-
-               var value = field.GetValue(this);
-               if (value != null) {
-                  parameterList.Add(Parameter.ExportValue(value, fieldSettings));
-               }
-            }
-         }
+         ValidateParameters();
+         var parameterList = Parameter.BuildParameterList(this);
 
          string format = string.IsNullOrWhiteSpace(Format)
             ? string.Empty
             : CPAScript.MarkFormatBegin + Format + CPAScript.MarkFormatEnd;
-         string parameters = string.Join(CPAScript.MarkParamSeparator, parameterList);
+         string parameters = string.Join(CPAScript.MarkParamSeparator, parameterList.Values);
          if (!string.IsNullOrWhiteSpace(parameters)) {
             parameters = $"{CPAScript.MarkParamBegin}{parameters}{CPAScript.MarkParamEnd}";
          }

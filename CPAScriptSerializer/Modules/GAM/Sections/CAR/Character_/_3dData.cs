@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.GAM.Commands.CAR._3dData;
 namespace CPAScriptSerializer.Modules.GAM.Sections.CAR.Character_ {
    public class _3dData : CPAScriptSection {
 
-      public _3dData(string sectionId) : base(sectionId) { }
+      public _3dData(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {

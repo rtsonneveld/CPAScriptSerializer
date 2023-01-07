@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace CPAScriptSerializer.Modules.AI.Enums {
@@ -25,6 +26,7 @@ namespace CPAScriptSerializer.Modules.AI.Enums {
       Operator_VectorMulScalar,
       Operator_VectorDivScalar,
       Operator_VectorUnaryMinus,
+      [Description("")]
       Operator_SetVectorX, // .X:=
       Operator_SetVectorY, // .Y:=
       Operator_SetVectorZ, // .Z:=
@@ -51,7 +53,7 @@ namespace CPAScriptSerializer.Modules.AI.Enums {
          }
       }
 
-      public static string ToString(this EnumOperator op)
+      public static string ExportString(this EnumOperator op)
       {
 
          switch (op) {

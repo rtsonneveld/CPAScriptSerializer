@@ -11,7 +11,7 @@ namespace CPAScriptSerializer.Modules.IPT.Sections {
       [CommandParameter(0)]
       public int KeyMaxNumber;
 
-      public KeyDefine(string sectionId) : base(sectionId)
+      public KeyDefine(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

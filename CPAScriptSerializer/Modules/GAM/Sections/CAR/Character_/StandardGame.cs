@@ -5,7 +5,7 @@ using Type = System.Type;
 namespace CPAScriptSerializer.Modules.GAM.Sections.CAR.Character_ {
    public class StandardGame : CPAScriptSection {
 
-      public StandardGame(string sectionId) : base(sectionId) { }
+      public StandardGame(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {

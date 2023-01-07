@@ -11,7 +11,7 @@ namespace CPAScriptSerializer.Modules.SND.Sections.CSB
       [CommandParameter(0)]
       public string SndEventM;
 
-      public SndEventE(string sectionId) : base(sectionId)
+      public SndEventE(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

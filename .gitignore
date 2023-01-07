@@ -399,3 +399,5 @@ FodyWeavers.xsd
 
 TestFiles/*
 TestGameData/*
+TestGameDataOutput/*
+TestGameDataOutput2/*

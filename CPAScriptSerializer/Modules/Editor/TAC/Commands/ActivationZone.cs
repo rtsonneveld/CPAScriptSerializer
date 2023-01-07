@@ -8,7 +8,7 @@ using CPAScriptSerializer.Modules.GAM.Sections.STA;
 namespace CPAScriptSerializer.Modules.Editor.TAC.Commands {
    public class ActivationZone : Command
    {
-      public CPAScriptReference<NewActivationZone> Zone;
-      public CPAScriptReference<CreateNewState> State;
+      [CommandParameter(0)] public CPAScriptReference<NewActivationZone> Zone;
+      [CommandParameter(1)] public CPAScriptReference<CreateNewState> State;
    }
 }

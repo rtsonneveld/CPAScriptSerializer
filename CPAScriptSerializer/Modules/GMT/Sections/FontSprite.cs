@@ -15,7 +15,7 @@ namespace CPAScriptSerializer.Modules.GMT.Sections {
       [CommandParameter(1)] public float Arg1;
       [CommandParameter(2)] public string Standard;
 
-      public FontSprite(string sectionId) : base(sectionId)
+      public FontSprite(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

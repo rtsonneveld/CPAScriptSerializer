@@ -7,7 +7,7 @@ namespace CPAScriptSerializer.Modules.SND.Sections.LCB
 {
    public class SndMapE : CPAScriptSection
    {
-      public SndMapE(string sectionId) : base(sectionId)
+      public SndMapE(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

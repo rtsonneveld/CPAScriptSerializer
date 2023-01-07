@@ -13,7 +13,7 @@ namespace CPAScriptSerializer.Modules.GLI.Sections {
       [CommandParameter(0)] public int NumberOfFaces;
       [CommandParameter(1)] public int NumberOfElementUVs;
 
-      public ElementIndexedTriangles(string sectionId) : base(sectionId) { }
+      public ElementIndexedTriangles(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {

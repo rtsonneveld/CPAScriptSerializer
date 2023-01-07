@@ -8,6 +8,10 @@ namespace CPAScriptSerializer.Modules.AI.Commands.NOD {
    {
       [CommandParameter(0)] public int TypeInterpret;
       [CommandParameter(1)] public int ValueInterpret;
+
       // Other parameters seem to go unused
+      [UnusedByCPA][CommandParameter(2)] public int UnknownParam2;
+      [UnusedByCPA][CommandParameter(3)] public int UnknownParam3;
+      [UnusedByCPA][CommandParameter(4)] public int UnknownParam4;
    }
 }

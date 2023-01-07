@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.GAM.Commands.DSC;
 
 namespace CPAScriptSerializer.Modules.GAM.Sections.DSC {
    public class AnimStacks : CPAScriptSection {
-      public AnimStacks(string sectionId) : base(sectionId)
+      public AnimStacks(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

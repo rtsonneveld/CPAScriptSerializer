@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.GAM.Commands.DSC;
 
 namespace CPAScriptSerializer.Modules.GAM.Sections.DSC {
    public class InputDeviceManagerDescription : CPAScriptSection {
-      public InputDeviceManagerDescription(string sectionId) : base(sectionId)
+      public InputDeviceManagerDescription(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

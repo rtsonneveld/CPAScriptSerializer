@@ -11,7 +11,7 @@ namespace CPAScriptSerializer
    /// </summary>
    public class DummySection : CPAScriptSection {
 
-      public DummySection(string sectionId) : base(sectionId) { }
+      public DummySection(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new() { };
       public override Type CommandTypeFallback(string name) => typeof(EmptyCommand);

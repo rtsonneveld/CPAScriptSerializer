@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.SND.Commands.CSB.SndRandomElementM;
 
 namespace CPAScriptSerializer.Modules.SND.Sections.CSB {
    public class SndRandomElementM : CPAScriptSection {
-      public SndRandomElementM(string sectionId) : base(sectionId)
+      public SndRandomElementM(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

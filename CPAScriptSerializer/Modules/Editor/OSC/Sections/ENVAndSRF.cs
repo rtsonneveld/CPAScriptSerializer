@@ -6,7 +6,7 @@ using CPAScriptSerializer.Modules.Editor.OSC.Commands;
 namespace CPAScriptSerializer.Modules.Editor.OSC.Sections {
    [UnusedByCPA]
    public class ENVAndSRF : CPAScriptSection {
-      public ENVAndSRF(string sectionId) : base(sectionId)
+      public ENVAndSRF(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

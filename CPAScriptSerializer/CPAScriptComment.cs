@@ -14,6 +14,10 @@ namespace CPAScriptSerializer
       public void Read(CPAScript script, CPAScriptSection section, StreamReader reader, string lastLine)
       {
          Comment = lastLine;
+
+         if (!Comment.Trim().StartsWith(CPAScript.MarkComment)) {
+            Comment = CPAScript.MarkComment + Comment;
+         }
       }
 
       public void Write(ref int indent, StreamWriter writer)

@@ -12,7 +12,7 @@ namespace CPAScriptSerializer.Modules.GLI.Sections {
    {
       [CommandParameter(0)] public EnumLightType LightType;
 
-      public Light(string sectionId) : base(sectionId) { }
+      public Light(string sectionId, string sectionType) : base(sectionId, sectionType) { }
 
       public override Dictionary<string, Type> CommandTypes { get; } = new Dictionary<string, Type>()
       {

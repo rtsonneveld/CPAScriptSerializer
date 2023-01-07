@@ -8,7 +8,7 @@ namespace CPAScriptSerializer.Modules.Editor.OAC.Sections.ENL
 {
    public class AddToNamesList : CreateNamesList
    {
-      public AddToNamesList(string sectionId) : base(sectionId)
+      public AddToNamesList(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
    }

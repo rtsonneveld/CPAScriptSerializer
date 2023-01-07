@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CPAScriptSerializer.Modules.GAM.Sections.DSC {
    internal class BinaryUse : CPAScriptSection {
-      public BinaryUse(string sectionId) : base(sectionId)
+      public BinaryUse(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

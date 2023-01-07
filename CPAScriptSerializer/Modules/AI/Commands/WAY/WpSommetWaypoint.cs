@@ -7,7 +7,7 @@ namespace CPAScriptSerializer.Modules.AI.Commands.WAY
       [CommandParameter(0)] public int Weight;
       /// <summary>
       /// A string of 32 0 or 1 characters, to indicate bits
-      /// TODO: Create a special type for this
+      /// TODO: Create a special type for this (capabilities/bits)
       /// </summary>
       [CommandParameter(1)] public string Capabilities;
    }

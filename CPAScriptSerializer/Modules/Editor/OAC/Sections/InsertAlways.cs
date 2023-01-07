@@ -8,7 +8,7 @@ namespace CPAScriptSerializer.Modules.Editor.OAC.Sections
 {
    public class InsertAlways : InsertCharacter
    {
-      public InsertAlways(string sectionId) : base(sectionId)
+      public InsertAlways(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
    }

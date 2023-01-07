@@ -7,7 +7,7 @@ using CPAScriptSerializer.Modules.SPO.Commands.Matrix;
 namespace CPAScriptSerializer.Modules.GAM.Sections.CAR.Character_ {
    public class Micro : CPAScriptSection
    {
-      public Micro(string sectionId) : base(sectionId)
+      public Micro(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

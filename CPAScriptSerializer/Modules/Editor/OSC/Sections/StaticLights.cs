@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.Editor.OSC.Commands;
 
 namespace CPAScriptSerializer.Modules.Editor.OSC.Sections {
    public class StaticLights : CPAScriptSection {
-      public StaticLights(string sectionId) : base(sectionId)
+      public StaticLights(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

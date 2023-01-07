@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.GAM.Commands.DSC;
 
 namespace CPAScriptSerializer.Modules.GAM.Sections.DSC {
    public class GameOptionsFile : CPAScriptSection {
-      public GameOptionsFile(string sectionId) : base(sectionId)
+      public GameOptionsFile(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

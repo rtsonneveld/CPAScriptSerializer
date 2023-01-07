@@ -5,7 +5,7 @@ using CPAScriptSerializer.Modules.Editor.TGM.Commands;
 
 namespace CPAScriptSerializer.Modules.Editor.TGM.Sections {
    public class MechanicalMaterial : CPAScriptSection {
-      public MechanicalMaterial(string sectionId) : base(sectionId)
+      public MechanicalMaterial(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

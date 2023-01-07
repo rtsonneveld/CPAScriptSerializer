@@ -7,7 +7,7 @@ namespace CPAScriptSerializer.Modules.SND.Sections.LCB
 {
    public class SndEventGroupList : CPAScriptSection
    {
-      public SndEventGroupList(string sectionId) : base(sectionId)
+      public SndEventGroupList(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

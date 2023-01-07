@@ -1,7 +1,7 @@
 ﻿namespace CPAScriptSerializer.Modules.SPO.Sections {
    public class EditListModifSuperObject : EmptySection
    {
-      public EditListModifSuperObject(string sectionId) : base(sectionId)
+      public EditListModifSuperObject(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CPAScriptSerializer.Modules.SND.Sections.CSB {
    public class SndRandomListE : CPAScriptSection {
-      public SndRandomListE(string sectionId) : base(sectionId)
+      public SndRandomListE(string sectionId, string sectionType) : base(sectionId, sectionType)
       {
       }
 

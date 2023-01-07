@@ -6,5 +6,5 @@ using CPAScriptSerializer.Commands.Generic;
 using CPAScriptSerializer.Modules.GLI.Enums;
 
 namespace CPAScriptSerializer.Modules.GLI.Commands.Light {
-   public class SetColor : Color4fCommand { }
+   public class SetColor : Color4fCommandOptionalAlpha { }
 }
