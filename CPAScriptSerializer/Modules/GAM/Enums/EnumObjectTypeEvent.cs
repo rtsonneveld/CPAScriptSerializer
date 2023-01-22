@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace CPAScriptSerializer.Modules.GAM.Enums {
-   public enum EnumObjectType {
+   public enum EnumObjectTypeEvent {
       GenericEvent,
       MechanicEvent,
       SoundEvent,

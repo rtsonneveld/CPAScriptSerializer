@@ -165,7 +165,9 @@ namespace CPAScriptSerializer.Commands
       public static implicit operator EnumInitFlags(Parameter p) => ParseEnumParam<EnumInitFlags>(p.Value);
       public static implicit operator EnumDynamSize(Parameter p) => ParseEnumParam<EnumDynamSize>(p.Value);
       public static implicit operator EnumGenericEventType(Parameter p) => ParseEnumParam<EnumGenericEventType>(p.Value);
-      public static implicit operator EnumObjectType(Parameter p) => ParseEnumParam<EnumObjectType>(p.Value);
+      public static implicit operator EnumKeyAttribute(Parameter p) => ParseEnumParam<EnumKeyAttribute>(p.Value);
+      public static implicit operator EnumObjectTypeEvent(Parameter p) => ParseEnumParam<EnumObjectTypeEvent>(p.Value);
+      public static implicit operator EnumObjectTypeFrame(Parameter p) => ParseEnumParam<EnumObjectTypeFrame>(p.Value);
       public static implicit operator EnumLightType(Parameter p) => ParseEnumParam<EnumLightType>(p.Value);
       public static implicit operator EnumLoadMode(Parameter p) => ParseEnumParam<EnumLoadMode>(p.Value);
       public static implicit operator Modules.GAM.Enums.EnumOnOffToggle(Parameter p) => ParseEnumParam<Modules.GAM.Enums.EnumOnOffToggle>(p.Value);

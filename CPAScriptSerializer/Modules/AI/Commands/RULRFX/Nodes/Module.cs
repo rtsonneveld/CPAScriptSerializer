@@ -1,5 +1,4 @@
 ﻿using CPAScriptSerializer.Commands;
-using CPAScriptSerializer.Modules.GAM.Commands.CHL;
 
 namespace CPAScriptSerializer.Modules.AI.Commands.RULRFX.Nodes
 {

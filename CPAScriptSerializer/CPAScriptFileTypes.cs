@@ -24,12 +24,14 @@ namespace CPAScriptSerializer {
          { "fff",  typeof(Modules.AI.CPAScript_RULRFX) }, // Seemingly some backup file
 
          // Module GAM
+         { "a3d", typeof(Modules.GAM.CPAScript_A3D) },
          { "car", typeof(Modules.GAM.CPAScript_CAR) },
          { "chl", typeof(Modules.GAM.CPAScript_CHL) },
          { "dsc", typeof(Modules.GAM.CPAScript_DSC) },
          { "lvl", typeof(Modules.GAM.CPAScript_LVL) },
          { "sta", typeof(Modules.GAM.CPAScript_STA) },
          { "tbl", typeof(Modules.GAM.CPAScript_TBL) },
+         { "txt", typeof(Modules.GAM.CPAScript_TXT) },
          { "mem", typeof(Modules.GAM.CPAScript_MEM) },
 
          { "tbc", typeof(Modules.GAM.CPAScript_TBL) }, // Seemingly unused by CPA? Seems like it's the same format as .tbl files anyways
@@ -43,7 +45,7 @@ namespace CPAScriptSerializer {
          // Module GMT
          { "gmt", typeof(Modules.GMT.CPAScript_GMT) },
          { "vmt", typeof(Modules.GMT.CPAScript_VMT) },
-         
+          
          // Module ISI
          { "rli", typeof(Modules.ISI.CPAScript_RLI) },
 
@@ -140,6 +142,27 @@ namespace CPAScriptSerializer {
          NO SUPPORT File extension .vev is not associated with any CPA script, or support hasn't been added yet!
        */
 
+      public static bool CanReadFile(string path, out Type scriptType, out string extension)
+      {
+         string fileName = Path.GetFileName(path).ToLower();
+         if (ExtensionToTypeMap.ContainsKey(fileName)) {
+
+            extension = fileName;
+            scriptType = ExtensionToTypeMap[fileName];
+
+         } else {
+            extension = string.IsNullOrWhiteSpace(Path.GetExtension(path)) ? "" : Path.GetExtension(path).ToLower().Substring(1); // Without the dot
+            if (!ExtensionToTypeMap.ContainsKey(extension)) {
+               scriptType = null;
+               return false;
+            }
+
+            scriptType = ExtensionToTypeMap[extension];
+         }
+
+         return true;
+      }
+
       public static CPAScript ReadFile(string path)
       {
          return ReadFile(path, Encoding.Default);
@@ -151,28 +174,16 @@ namespace CPAScriptSerializer {
             throw new FileNotFoundException();
          }
 
-         Type scriptType = null;
-
          // First check for exact file name matches
 
-         string fileName = Path.GetFileName(path).ToLower();
-         if (ExtensionToTypeMap.ContainsKey(fileName)) {
-
-            scriptType = ExtensionToTypeMap[fileName];
-
-         } else {
-            string extension = string.IsNullOrWhiteSpace(Path.GetExtension(path)) ? "" : Path.GetExtension(path).ToLower().Substring(1); // Without the dot
-            if (!ExtensionToTypeMap.ContainsKey(extension)) {
-               throw new NotSupportedException(
-                  $"File extension .{extension} is not associated with any CPA script, or support hasn't been added yet!");
-            }
-
-            scriptType = ExtensionToTypeMap[extension];
+         if (!CanReadFile(path, out Type scriptType, out string extension)) {
+            throw new NotSupportedException(
+               $"File extension .{extension} is not associated with any CPA script, or support hasn't been added yet!");
          }
 
          CPAScript script = Activator.CreateInstance(scriptType) as CPAScript;
          if (script == null) {
-            throw new Exception($"Could not create CPAScript for file {fileName}");
+            throw new Exception($"Could not create CPAScript for file {Path.GetFileName(path)}");
          }
 
          using (var stream = File.OpenRead(path)) {

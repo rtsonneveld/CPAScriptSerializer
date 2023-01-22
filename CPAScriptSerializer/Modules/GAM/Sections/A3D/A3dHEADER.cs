@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using CPAScriptSerializer.Modules.GAM.Commands.CHL;
+using CPAScriptSerializer.Modules.GAM.Commands.A3D;
 
-namespace CPAScriptSerializer.Modules.GAM.Sections.CHL {
+namespace CPAScriptSerializer.Modules.GAM.Sections.A3D {
    
    // ReSharper disable once InconsistentNaming
    public class A3dHEADER : CPAScriptSection {

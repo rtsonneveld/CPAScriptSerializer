@@ -3,17 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
-using CPAScriptSerializer.Commands;
-using CPAScriptSerializer.Modules.AI;
-using CPAScriptSerializer.Modules.AI.Commands.DEC.Variables;
-using CPAScriptSerializer.Modules.GLI;
-using CPAScriptSerializer.Modules.GMT;
-using CPAScriptSerializer.Modules.IPT;
-using CPAScriptSerializer.Modules.MEC;
-using CPAScriptSerializer.Modules.SND;
-using CPAScriptSerializer.Modules.SPO;
 using CPAScriptSerializer.Tests;
-using Newtonsoft.Json;
 
 namespace CPAScriptSerializer
 {
@@ -33,7 +23,7 @@ namespace CPAScriptSerializer
          bool readAndWrite = true;
          bool compare = false;
          if (readAndWrite) {
-            foreach (var file in Directory.GetFiles(Path.Combine(TestFilesDir), "*.*", SearchOption.AllDirectories)) {
+            foreach (var file in Directory.GetFiles(Path.Combine(TestFilesDir), "*.a3d", SearchOption.AllDirectories)) {
 
                var script = ReadAndWriteTest(file);
                if (script != null)

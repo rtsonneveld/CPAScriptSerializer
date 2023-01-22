@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CPAScriptSerializer.Modules.AI.Sections.DEC;
-using CPAScriptSerializer.Modules.GAM.Sections.CHL;
+using CPAScriptSerializer.Modules.GAM.Sections.A3D;
 
 namespace CPAScriptSerializer.Modules.GAM
 {

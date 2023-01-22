@@ -17,6 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="CPAScriptSerializer\Modules\GAM\Commands\A3D\A3dHIERARCHY\" />
+    <Folder Include="CPAScriptSerializer\Modules\GAM\Commands\A3D\DeformationFrame\" />
     <Folder Include="CPAScriptSerializer\Modules\GAM\Commands\CAR\Brain\" />
     <Folder Include="CPAScriptSerializer\Modules\SNA\Enums\" />
   </ItemGroup>
