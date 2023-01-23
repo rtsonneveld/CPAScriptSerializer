@@ -12,8 +12,8 @@ namespace CPAScriptSerializer.Modules.GAM.Sections.TBL {
          {nameof(ObjectType), typeof(ObjectType)},
          {nameof(SoundEvent), typeof(SoundEvent)},
          {nameof(GenericEvent), typeof(GenericEvent)},
-         //{nameof(MechanicEvent), typeof(MechanicEvent)}, -- Mechanic Event was removed from CPA
-         //{nameof(GenerateEvent), typeof(GenerateEvent)}, -- Generate Event was removed from CPA
+         {nameof(MechanicEvent), typeof(MechanicEvent)}, //-- Mechanic Event was removed from CPA
+         {nameof(GenerateEvent), typeof(GenerateEvent)}, //-- Generate Event was removed from CPA
 
          {nameof(FirstCall), typeof(FirstCall)},
          {nameof(Period), typeof(Period)},
